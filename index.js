@@ -4,11 +4,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require('dotenv').config();
+
+// app.set('views','./views/homePage')
+app.set('view engine','ejs')
+// app.use(express.static(__dirname + '/views/homePage'));
 app.use(express.static('public'))
 
-app.set('views','./views/homePage')
-app.set('view engine','ejs')
-app.use(express.static(__dirname + '/views/homePage'));
 
 app.get("/dash", (req, res) => {
   res.render('dashboard');
