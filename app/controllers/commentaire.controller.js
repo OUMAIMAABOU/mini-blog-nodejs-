@@ -14,27 +14,58 @@ exports.create = (req, res) => {
         .catch(err => {
           res.status(500).send({
             message:
-              err.message || "not add ."
+              err.message 
           });
         });
 };
 
 exports.show = (req, res) => {
-  console.log('hi oumzizbou')
-};
+ };
 
 exports.findAll = (req, res) => {
   
+  Commentaire.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message
+      });
+    });
 };
+
 
 exports.findOne = (req, res) => {
   
 };
 
 exports.update = (req, res) => {
+    }
   
-};
+
 
 exports.delete = (req, res) => {
-  
+  const id = req.params.id;
+
+  Commentaire.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "successfully!"
+        });
+      } else {
+        res.send({
+          message: `not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: " id=" + id +"not existe"
+      });
+    });
 };
