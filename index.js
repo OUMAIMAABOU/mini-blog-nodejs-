@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+require('dotenv').config();
+
 app.set('views','./app/views')
 app.set('view engine','ejs')
 
@@ -26,6 +28,8 @@ db.sequelize.sync()
 
 
   require("./app/routes/routes")(app);
-  const port=process.env.port || 8080
+  const port=process.env.PORT || 3000
+  console.log('The value of PORT is:', process.env.PORT ,port);
+
   app.listen(port)
 
