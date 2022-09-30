@@ -1,8 +1,6 @@
 const db = require("../models");
 const Commentaire = db.commentaire;
 const Op = db.Sequelize.Op;
-
-
 exports.create = (req, res) => {
     const commentaires = {
         email: req.body.email,
