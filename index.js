@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
@@ -24,8 +24,8 @@ db.sequelize.sync()
     console.log("Drop and re-sync db.");
   });
 
-  require("./app/routes/commentaire.routes")(app);
-  const port=process.env.port||8080
-  app.listen(port,()=>{
-    console.log('sever is run',port)
+  require("./app/routes/routes")(app);
+
+  app.listen(6000,()=>{
+    console.log('sever is run')
   })

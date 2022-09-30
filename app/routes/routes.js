@@ -15,5 +15,5 @@ module.exports = app => {
     router.delete("/:id", commentaire.delete);
   
   
-    app.use('commentaire', router);
+    app.use('/commentaire', router);
   };
