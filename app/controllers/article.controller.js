@@ -8,7 +8,7 @@ const Article = db.article;
 exports.create = (req, res) => {
   const article = {
       title: req.body.title,
-      url: req.body.url,
+      url:slug(req.body.title),
       contenu: req.body.contenu,
     };
     Article.create(article)
