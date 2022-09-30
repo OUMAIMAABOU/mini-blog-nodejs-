@@ -89,5 +89,5 @@ exports.delete = (req, res) => {
     });
 };
 Commentaire.belongsTo(db.article); 
-db.article.hasMany(Commentaire); 
+article.hasMany(Commentaire); 
 
