@@ -1,8 +1,7 @@
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "root",
-    DB: "gestion_de_blog",
+    PASSWORD: "",
+    DB: "demo_js",
     dialect: "mysql",
- 
   };
