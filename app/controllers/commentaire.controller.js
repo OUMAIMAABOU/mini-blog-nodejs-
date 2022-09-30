@@ -31,6 +31,7 @@ exports.findAllcommentaire = (req, res  ) => {
 });
 }
 
+
 exports.findOnecommentaire = (req, res) => {
 const id = req.params.id;
 commentaire.findByPk(id)

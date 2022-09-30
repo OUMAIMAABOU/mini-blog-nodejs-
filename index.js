@@ -28,9 +28,9 @@ app.set('view engine','ejs')
 app.get("/", (req, res) => {
   res.render('homePage');
 });
-app.get("/blog", (req, res) => {
-  res.render('blog_details');
-});
+// app.get("/blog", (req, res) => {
+//   res.render('blog_details');
+// });
 // ________________________ dashboard ______________________
 // Dashboard
 app.get("/", (req, res) => {

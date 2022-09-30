@@ -19,6 +19,11 @@ module.exports = app => {
   app.get("/comments/edite/:id", commentaire.findOnecommentaire);
   router.get("/gitOneAvis/:id", avis.findOne);
   router.get("/gitOneArticle/:id", article.findOne);
+  app.get("/:slug",article.findOne);
+  
+
+
+
   router.get("/getoneCategorie/:id", categorie.findOne);
 
   app.post("/comments/update", commentaire.updatecommentaire);

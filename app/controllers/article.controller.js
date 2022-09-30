@@ -1,4 +1,4 @@
-const { article } = require('../models');
+const {commentaire } = require('../models');
 const db = require('../models');
 const slug = require('slug')
 
@@ -34,8 +34,24 @@ exports.findAll = (req, res) => {
   });
 };
 
+
 exports.findOne = (req, res) => {
-  
+  const slug = req.params.slug;
+  Article.findOne({where: {article_url: slug}
+  }).then(data => {
+        if (data) {
+          res.render('blog_details',{'data':data,})
+        } else {
+            res.status(404).send({
+                message: `Cannot find Article `
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Error retrieving Article"
+        });
+    });
 };
 
 exports.update = (req, res) => {
