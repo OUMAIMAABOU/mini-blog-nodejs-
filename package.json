@@ -1,12 +1,10 @@
 {
-  "name": "env.js",
+  "name": "blog",
   "version": "1.0.0",
-  "description": "first project nidejs",
-  "main": "env.js",
+  "description": "nodejs express",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node env.js",
-    "dev": "nodemon env.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,11 +17,8 @@
   },
   "homepage": "https://github.com/OUMAIMAABOU/mini-blog-nodejs-#readme",
   "dependencies": {
-    "ejs": "^3.1.8",
     "express": "^4.18.1",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.20",
-    "sequelize": "^6.23.2",
-    "sequelize-cli": "^6.5.1"
+    "sequelize": "^6.23.2"
   }
 }
