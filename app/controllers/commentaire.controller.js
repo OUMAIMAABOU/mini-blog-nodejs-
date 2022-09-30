@@ -1,3 +1,4 @@
+const { commentaire } = require("../models");
 const db = require("../models");
 const Commentaire = db.commentaire;
 const Op = db.Sequelize.Op;
@@ -40,7 +41,7 @@ exports.findAllcommentaire = () => {
 }
 
 exports.findOne = (req, res) => {
-  
+
 };
 exports.updatecommentaire = (req, res) => {
   const id = req.params.id;
@@ -96,9 +97,3 @@ exports.delete = (req, res) => {
     });
 };
 
-// exports.delete = (req, res) => {
-//     const id = req.params.id;
-//    Commentaire.destroy( {where: { id: id }});
-//    console.log(id)
-//     res.render('/commentaire');
-// }

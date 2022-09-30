@@ -35,10 +35,12 @@ app.get('/commentaire', async(req, res) => {
   let commantaire = await findAllcommentaire()
   res.render('avisComme', {commantaire})
 })
-
-app.get('/commentaire/:id', async(req, res) => {
-  
+app.get('/commentaire/update', async(req, res) => {
+  let commantaire = await findAllcommentaire()
+  res.render('formeupdate', {commantaire})
 })
+
+
 
 
 
