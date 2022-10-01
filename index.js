@@ -22,4 +22,4 @@ db.sequelize.sync()
   // });
 
   require("./app/routes/routes")(app);
-  app.listen(6000)
+  app.listen(8080)
