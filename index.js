@@ -24,8 +24,10 @@ db.sequelize.sync()
   //   console.log("Drop and re-sync db.");
   // });
 
-  require("./app/routes/commentaire.routes")(app);
+
+  require("./app/routes/routes")(app);
   const port=process.env.port||8080
   app.listen(port,()=>{
     console.log(`sever running on http://localhost:${port}`)
   })
+
