@@ -8,9 +8,6 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-
-
-
 const db = require("./app/models");
 db.sequelize.sync()
   .then(() => {
@@ -20,9 +17,9 @@ db.sequelize.sync()
     console.log("Failed to sync db: " + err.message);
   });
 
-  db.sequelize.sync({ force: true }).then(() => {
-    console.log("Drop and re-sync db.");
-  });
+  // db.sequelize.sync({ force: true }).then(() => {
+  //   console.log("Drop and re-sync db.");
+  // });
 
   require("./app/routes/commentaire.routes")(app);
   const port=process.env.port||8080
