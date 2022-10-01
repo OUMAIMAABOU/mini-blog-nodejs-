@@ -22,6 +22,6 @@ db.sequelize.sync()
 
   require("./app/routes/routes")(app);
 
-  app.listen(8080,()=>{
+  app.listen(6000,()=>{
     console.log('sever is run')
   })

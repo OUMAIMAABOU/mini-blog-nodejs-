@@ -19,9 +19,6 @@ exports.create = (req, res) => {
         });
 };
 
-exports.show = (req, res) => {
- };
-
 exports.findAll = (req, res) => {
   
   Commentaire.findAll()
@@ -42,7 +39,28 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    }
+  const id = req.params.id;
+
+  Commentaire.update(req.body, {
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: " updated successfully."
+        });
+      } else {
+        res.send({
+          message: `Cannot update `
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error updating " + id
+      });
+    });
+};
   
 
 
