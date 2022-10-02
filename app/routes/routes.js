@@ -10,12 +10,13 @@ module.exports = app => {
     router.get("/getAllCategorie", categorie.findAll);
     
     router.get("/:id", commentaire.findOne);
-    router.get("/:idgetoneCategorie", categorie.findOne);
+    router.get("/getoneCategorie/:id", categorie.findOne);
 
     router.put("/:id", commentaire.update);
-    // router.put("/:idUpdateCategorie", categorie.update);
+    router.put("/UpdateCategorie/:id", categorie.update);
 
     router.delete("/:id", commentaire.delete);
+    router.delete("/deleteCategorie/:id", categorie.delete);
   
   
     app.use('/commentaire', router);
