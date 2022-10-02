@@ -22,7 +22,8 @@ module.exports = (sequelize, Sequelize) => {
   
     return commentaire;
   };
-
+  // / Articles.hasMany(commentaire);
+  // commentaire.belongsTo(Articles);
 
 
    

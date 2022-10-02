@@ -3,10 +3,13 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.set('views','./app/views')
+app.set('view engine','ejs')
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.render('home');
 });
+
 
 const db = require("./app/models");
 db.sequelize.sync()
@@ -21,5 +24,8 @@ db.sequelize.sync()
   //   console.log("Drop and re-sync db.");
   // });
 
+
   require("./app/routes/routes")(app);
-  app.listen(8080)
+  const port=process.env.port || 8080
+  app.listen(port)
+
