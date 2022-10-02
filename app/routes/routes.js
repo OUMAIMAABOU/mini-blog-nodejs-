@@ -8,15 +8,17 @@ module.exports = app => {
   router.post("/createAvis", avis.create);
 
   router.get("/", commentaire.findAll);
-  router.get("/showAvis", avis.findAll);
+  router.get("/showAllAvis", avis.findAll);
 
 
   router.get("/:id", commentaire.findOne);
-  router.get("/gitAvis/:id", avis.findOne);
+  router.get("/gitOneAvis/:id", avis.findOne);
 
   router.put("/:id", commentaire.update);
+  router.put("/updateAvis/:id", avis.update)
 
   router.delete("/:id", commentaire.delete);
+  router.delete("/deleteAvis/:id" , avis.delete)
 
 
   app.use('/commentaire', router);
