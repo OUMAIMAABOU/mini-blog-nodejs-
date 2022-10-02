@@ -37,11 +37,15 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   
 };
-
 exports.update = (req, res) => {
   const id = req.params.id;
+  const commentaires = {
+    email: req.body.email,
+    nom: req.body.nom,
+    commentaire: req.body.commentaire 
+  };
 
-  Commentaire.update(req.body, {
+  Commentaire.update(commentaires, {
     where: { id: id }
   })
     .then(num => {
