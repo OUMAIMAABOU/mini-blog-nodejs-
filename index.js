@@ -20,10 +20,14 @@ db.sequelize.sync()
     console.log("Failed to sync db: " + err.message);
   });
 
- 
+  // db.sequelize.sync({ force: true }).then(() => {
+  //   console.log("Drop and re-sync db.");
+  // });
+
 
   require("./app/routes/routes")(app);
-
-  app.listen(6000,()=>{
-    console.log('sever is run')
+  const port=process.env.port||8080
+  app.listen(port,()=>{
+    console.log(`sever running on http://localhost:${port}`)
   })
+
