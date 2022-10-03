@@ -5,7 +5,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require('dotenv').config();
 
-app.set('views','./app/views')
+app.set('views','./views')
 app.set('view engine','ejs')
 
 app.get("/", (req, res) => {
