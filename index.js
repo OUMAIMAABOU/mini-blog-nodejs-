@@ -24,5 +24,8 @@ db.sequelize.sync()
     console.log("Drop and re-sync db.");
   });
 
-  require("./app/routes/routes")(app);
+  const commentaireRouter = require("./app/routes/routes");
+
+  app.use('/commentaire', commentaireRouter)
+
   app.listen(3000)
