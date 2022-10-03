@@ -10,7 +10,7 @@ app.use(express.static('public'))
 app.set('views','./views/dashboard')
 app.set('view engine','ejs')
 
-app.get("/", (req, res) => {
+app.get("/dash", (req, res) => {
   res.render('dashboard');
 });
 
