@@ -22,6 +22,7 @@ db.sequelize.sync()
     console.log("Failed to sync db: " + err.message);
   });
 
+
   // db.sequelize.sync({ force: true }).then(() => {
   //   console.log("Drop and re-sync db.");
   // });
@@ -32,4 +33,3 @@ db.sequelize.sync()
   console.log('The value of PORT is:', process.env.PORT ,port);
 
   app.listen(port)
-
