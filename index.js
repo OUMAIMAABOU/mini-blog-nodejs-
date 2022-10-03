@@ -10,11 +10,13 @@ app.set('views','./views/homePage')
 app.set('view engine','ejs')
 app.use(express.static(__dirname + '/views/homePage'));
 
+app.get("/dash", (req, res) => {
+  res.render('dashboard');
+});
+
 app.get("/", (req, res) => {
   res.render('homePage');
 });
-
-
 const db = require("./app/models");
 db.sequelize.sync()
   .then(() => {
