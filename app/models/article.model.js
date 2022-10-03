@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-    const article = sequelize.define("article", {
-        id: {
+    const article = sequelize.define("articles", {
+          id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -11,12 +11,12 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
           },
           nom: {
-           type:Sequelize.STRING,
-           allowNull: false
-         },
-         article: {
-           type:Sequelize.TEXT,
-           allowNull: false
+            type:Sequelize.STRING,
+            allowNull: false
+          },
+          article: {
+            type:Sequelize.TEXT,
+            allowNull: false
          }
     });
   
