@@ -1,0 +1,47 @@
+.main .search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+
+}
+
+.main .search input {
+    text-indent: 25px;
+    width: 300px;
+    border: 2px solid #d6d4d4;
+}
+
+
+.main .search input:focus {
+
+    box-shadow: none;
+    border: 2px solid blue;
+
+
+}
+
+.main .search .fa-search {
+
+    position: absolute;
+    top: 15px;
+    left: 16px;
+
+}
+
+.main .search button {
+
+    position: absolute;
+    top: 2.5px;
+    right: 2.5px;
+    height: 38px;
+    background: blue;
+
+}
+
+select{
+    height: 28px;
+    width: 60px;
+}
+
+table tbody{
+    border: none !important;
+}

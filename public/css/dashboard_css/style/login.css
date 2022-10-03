@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+}
+
+body{
+    background-image: url(./../../image/login_back.jpg);
+    background-size: cover;
+    background-repeat: space;
+}
+
+
+#logo{
+    width: 30%;
+}
+.row > div{
+    background-color: white;
+    border: 1px solid #b3b3b3;
+    padding: 40px;
+}
+p{
+    font-size: 28px;
+}
+#forget{
+    color: #4996FC;
+    text-decoration: none;
+}
+
+.lol{
+    margin-top: 13vw;
+}
+
+.lol_{
+    margin-top: 8vw;
+}
+
+img{
+    width: 146px;
+}
+
+button{
+    background-color: #4996FC;
+    margin-bottom: 0.5vw;
+}
+
+.alert{
+    font-size: 15px;
+}
