@@ -20,11 +20,6 @@ exports.create = (req, res) => {
           });
         });
 };
-
-exports.show = (req, res) => {
-  console.log('hi oumzizbou')
-};
-
 exports.findAll = (req, res) => {
   Article.findAll()
   .then(data => {
