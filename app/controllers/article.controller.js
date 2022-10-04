@@ -20,6 +20,7 @@ exports.create = (req, res) => {
           });
         });
 };
+
 exports.findAll = (req, res) => {
   Article.findAll()
   .then(data => {

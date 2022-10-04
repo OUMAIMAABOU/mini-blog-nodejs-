@@ -1,27 +1,23 @@
 module.exports = (sequelize, Sequelize) => {
-    const article = sequelize.define("articles", {
-          id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-   
-          },
-          email: {
-            type:Sequelize.STRING,
-            allowNull: false
-          },
-          nom: {
-            type:Sequelize.STRING,
-            allowNull: false
-          },
-          article: {
-            type:Sequelize.TEXT,
-            allowNull: false
-         }
-    });
+  const article = sequelize.define("articles", {
+        id: {
+          type: Sequelize.INTEGER,
+          primaryKey: true,
+          autoIncrement: true
   
-    return article;
-  };
+        },
+        article_url: {
+          type:Sequelize.STRING,
+        },
+        article_title: {
+          type:Sequelize.STRING,
+        },
+        article_contenu: {
+          type:Sequelize.STRING,
+        }
+  });
+  return article;
+};
 
 
 
