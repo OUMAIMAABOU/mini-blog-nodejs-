@@ -36,6 +36,7 @@ exports.create = (req, res) => {
 // };
 exports.findAllcommentaire = () => {
   return Commentaire.findAll()
+
 }
 
 exports.findOne = (req, res) => {

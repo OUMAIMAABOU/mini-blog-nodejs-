@@ -36,6 +36,10 @@ app.get('/commentaire', async(req, res) => {
   res.render('avisComme', {commantaire})
 })
 
+app.get('/commentaire/:id', async(req, res) => {
+  
+})
+
 
 
 

@@ -26,7 +26,7 @@ module.exports = app => {
   router.put("/updateArticle/:id", article.update)
   router.put("/UpdateCategorie/:id", categorie.update);
   
-  router.delete("/delete/:id", commentaire.delete);
+  app.get("/commantaire/delete/:id", commentaire.delete);
   router.delete("/deleteAvis/:id" , avis.delete)
   router.delete("/deleteArticle/:id" , article.delete)
   router.delete("/deleteCategorie/:id", categorie.delete);
@@ -35,4 +35,5 @@ module.exports = app => {
   app.use('/article', router);
   app.use('/avis', router);
   app.use('/categorie', router)
+
 };
