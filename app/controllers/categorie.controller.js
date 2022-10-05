@@ -6,8 +6,7 @@ const Op = db.Sequelize.Op;
     exports.create = (req, res) => {
         const categories = {
             name: req.body.name,
-            update: req.body.update,
-            delete: req.body.delete 
+            id_article: req.body.id_article,
         };
         Categorie.create(categories).then(data => {
             res.send(data);
@@ -20,20 +19,18 @@ const Op = db.Sequelize.Op;
         });
     };
 
-    exports.findAll = (req, res) => {
-        const name = req.query.name;
-        var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
+    exports.findAll = () => {
+        // const name = req.query.name;
+        // var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
     
-        categorie.findAll({ where: condition })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-            message:
-                err.message || "Some error occurred while retrieving tutorials."
-            });
-        });
+       return  categorie.findAll() 
+        // .catch(err => {
+        //     res.status(500).send({
+        //     message:
+        //         err.message || "Some error occurred while retrieving tutorials."
+        //     });
+        // });
+        
     };
 
     exports.findOne = (req, res) => {
@@ -55,6 +52,13 @@ const Op = db.Sequelize.Op;
             });
         });
     };
+
+
+    exports.test_id = (req,res) =>{
+        const id = req.params.id;
+        res.redirct("/")
+        console.log(id)
+    }
 
     exports.update = (req, res) => {
         const id = req.params.id;
@@ -84,8 +88,7 @@ const Op = db.Sequelize.Op;
         const id = req.params.id;
     
         categorie.destroy({
-        where: { id: id }
-        })
+        where: { id: id }})
         .then(num => {
             if (num == 1) {
             res.send({

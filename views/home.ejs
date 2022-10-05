@@ -1,1 +1,26 @@
 <h1> Welcome oumaima </h1>
+<script>
+   
+</script>
+
+<div>
+    <ul>
+        <% categ.forEach(function(categorie) { %>
+           <li> name:<%= categorie.name %> </li>
+        <% }); %> 
+       </ul>
+       <table>
+        <tr>
+            <th>name categorie</th>
+            <th>---------</th>
+            <th>---------</th>
+        </tr>
+        <% categ.forEach(function(categorie) { %>
+            <tr>
+            <td><%= categorie.name %></td>
+            <td>update</td>
+            <td>delete</td>
+        </tr>
+            <% }); %> 
+       </table>
+</div>

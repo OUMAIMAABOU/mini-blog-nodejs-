@@ -1,10 +1,10 @@
 const express = require("express");
+const { findAll } = require("./app/controllers/categorie.controller");
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require('dotenv').config();
-
 app.set('views','./views')
 app.set('view engine','ejs')
 
@@ -21,6 +21,11 @@ db.sequelize.sync()
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
+ 
+  app.get('/home', async(req, res) => {
+    let categ = await findAll()
+    res.render('home', {categ})
+  })
 
 
   // db.sequelize.sync({ force: true }).then(() => {
@@ -29,7 +34,7 @@ db.sequelize.sync()
 
 
   require("./app/routes/routes")(app);
-  const port=process.env.PORT || 8080
+  const port=process.env.PORT || 3000
   console.log('The value of PORT is:', process.env.PORT ,port);
 
   app.listen(port)
