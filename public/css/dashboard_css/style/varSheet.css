@@ -1,0 +1,16 @@
+:root {
+    --bg-color-blanchedalmond: #F9F9F9;
+    --bg-color-side: #F2F3F5;
+    --main-text-color: #707070;
+    --main-border-blue: #0160F3;
+    --main-border-green: #01AB68;
+    --main-border-green-opp: #3c763d;
+    --main-border-red: #E81400;
+    --main-border-blanchedalmond: #6CA9FA;
+    --border-red: rgb(255, 0, 0) solid 2px;
+    --border-gry: rgb(74, 67, 67) solid 2px;
+    --border-blue: rgb(38, 0, 255) solid 2px;
+    --width-side-bar: 16vw;
+    --width-side-bar-active: 100px;
+    --height-nav-bar: 100px;
+}

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+}
+
+body{
+    /*background-image: url(../image/pexels-tirachard-kumtanom-733852.jpg)*/
+    background-size: cover;
+    background-repeat: space;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#logo{
+    width: 30%;
+}
+
+#login{
+    background-color: white;
+    border-radius: 7px;
+    font-size: 20px;
+    color: #4996FC;
+    background-color: white;
+    border: 3px solid #4996FC;
+    padding: 6px 12px 6px 12px;
+    margin-right: 30px;
+}
+
+#get_started{
+    background-color: white;
+    border-radius: 7px;
+    font-size: 20px;
+    color:white;
+    background-color: #4996FC;
+    border: 3px solid #4996FC;
+    padding: 6px 12px 6px 12px;
+    margin-right: 30px;
+}
+
+.simple_img{
+    width: 48vw;
+    height: 30vw;
+}
+
+.left_cont{
+    margin: 6.5vw;
+}
+
+.left_cont > h1{
+   font-size: 3vw;
+}
+
+main{
+    margin-top: 70px;
+    padding: 40px;
+}
+span{
+    font-size: x-large;
+}
+.row img{
+    width: 20%;
+}
+.container{
+    margin-top: 50px;
+}
+.row > div{
+    background-color: white;
+    border: 1px solid #b3b3b3;
+    text-align: center;
+    margin: 1%;
+}
+h2{
+    color: orange;
+}
+footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+}
+a{
+    text-decoration: none;
+}

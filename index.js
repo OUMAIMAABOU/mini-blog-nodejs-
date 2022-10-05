@@ -7,13 +7,13 @@ app.use(express.urlencoded({ extended: true }));
 require('dotenv').config();
 app.set('views','./views')
 app.set('view engine','ejs')
+app.use(express.static('public'))
 
-app.get("/", (req, res) => {
-  res.render('home');
-});
-
+const { findAllcommentaire}   = require('./app/controllers/commentaire.controller.js')
 
 const db = require("./app/models");
+
+
 db.sequelize.sync()
   .then(() => {
     console.log("create db.");
@@ -26,15 +26,34 @@ db.sequelize.sync()
     let categ = await findAll()
     res.render('home', {categ})
   })
+app.set('views','./views/dashboard')
+app.set('view engine','ejs')
+// app.use(express.static(__dirname + '/views/homePage'));
 
 
-  // db.sequelize.sync({ force: true }).then(() => {
-  //   console.log("Drop and re-sync db.");
-  // });
+app.get("/dash", (req, res) => {
+  res.render('dashboard');
+});
+
+// app.get("/", (req, res) => {
+//   res.render('homePage');
+// });
 
 
-  require("./app/routes/routes")(app);
-  const port=process.env.PORT || 3000
+app.get('/commentaire', async(req, res) => {
+  let commantaire = await findAllcommentaire()
+  res.render('avisComme', {commantaire})
+})
+
+app.get('/commentaire/:id', async(req, res) => {
+  
+})
+
+
+
+
+require("./app/routes/routes")(app);
+  const port=process.env.PORT || 8080
   console.log('The value of PORT is:', process.env.PORT ,port);
 
   app.listen(port)

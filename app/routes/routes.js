@@ -11,7 +11,7 @@ module.exports = app => {
   router.post("/createArticle", article.create);
   router.post("/createCategorie", categorie.create);
 
-  router.get("/", commentaire.findAll);
+  router.get("/", commentaire.findAllcommentaire);
   router.get("/showAllAvis", avis.findAll);
   router.get("/showAllArticles", article.findAll);
   router.get("/getAllCategorie", categorie.findAll);
@@ -21,12 +21,12 @@ module.exports = app => {
   router.get("/gitOneArticle/:id", article.findOne);
   router.get("/getoneCategorie/:id", categorie.findOne);
 
-  router.put("/:id", commentaire.update);
+  router.put("/:id", commentaire.updatecommentaire);
   router.put("/updateAvis/:id", avis.update)
   router.put("/updateArticle/:id", article.update)
   router.put("/UpdateCategorie/:id", categorie.update);
-
-  router.delete("/:id", commentaire.delete);
+  
+  app.get("/commantaire/delete/:id", commentaire.delete);
   router.delete("/deleteAvis/:id" , avis.delete)
   router.delete("/deleteArticle/:id" , article.delete)
   router.delete("/deleteCategorie/:id", categorie.delete);
@@ -35,4 +35,5 @@ module.exports = app => {
   app.use('/article', router);
   app.use('/avis', router);
   app.use('/categorie', router)
+
 };

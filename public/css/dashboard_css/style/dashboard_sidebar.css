@@ -1,0 +1,277 @@
+@import url('varSheet.css');
+
+html, body{
+    width: 100%;
+    height: 100%;
+    font-size: 17px;
+    line-height: 22px;
+    color: var(--main-text-color);
+    background: #F9F9F9;
+}
+*{
+    padding: 0;
+    margin: 0;
+    -webkit-user-drag: none;
+}
+
+.side__bar{
+    background: white;
+    width: var(--width-side-bar);
+    transition-timing-function: ease-in-out;
+    transition: width .4s;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    overflow: auto;
+    z-index: 9;
+}
+.nav__bar{
+    height: var(--height-nav-bar);
+    top: 0;
+    left: var(--width-side-bar);
+    width: calc(100% - var(--width-side-bar));
+    position: fixed;
+    background: var(--bg-color-blanchedalmond);
+    transition-timing-function: ease-in-out;
+    transition: width .4s;
+    z-index: 8;
+}
+.main{
+    position: absolute;
+    top: var(--height-nav-bar);
+    left: var(--width-side-bar);
+    width: calc(100% - var(--width-side-bar));
+    transition-timing-function: ease-in-out;
+    transition: width .4s;
+}
+
+.side__bar.active{
+    width: 72px;transition-timing-function: ease-in-out;
+    transition: width .4s;
+}
+.side__bar .logo-1{
+    display: block;
+    transition-timing-function: ease-in;
+    transition: width .4s;
+}
+.side__bar.active .logo-1{
+        transition-timing-function: ease-in-out;
+        transition: width .4s;
+    display: none;
+}
+.side__bar .logo-2{
+    transition-timing-function: ease-in-out;
+    transition: width .4s;
+    display: none;
+}
+.side__bar.active .logo-2{
+    transition-timing-function: ease-in-out;
+    transition: width .4s;
+    display: flex;
+    height: 144px;
+}
+.side__bar.active ul li a span{
+    transition-timing-function: ease-in-out;
+    transition: width .4s;
+    display: none;
+}
+.nav__bar.active,
+.main.active{
+    transition-timing-function: ease-in-out;
+    transition: width .4s;
+    width: calc(100% - 72px);
+    left: 72px;
+}
+.logo{
+    margin-top: 1vw;
+    margin-bottom: 4vw;
+}
+.side__bar nav ul li{
+    height: 3.4vw;
+}
+.side__bar nav ul li a{
+    color: var(--main-text-color);
+}
+.link__active{
+    background-color: var(--main-border-blanchedalmond);
+    border-radius: 0 20px 20px 0;
+}
+.side__bar.active .link__active{
+    background-color: var(--main-border-blanchedalmond);
+    border-radius: 0 12px 12px 0;
+}
+.side__bar .link__active a span{
+    color: var(--main-text-color);
+}
+.side__bar nav .nav-item:hover{
+    background-color: var(--main-border-blanchedalmond);
+    color: var(--main-text-color);
+    border-radius: 0 20px 20px 0;
+}
+.side__bar nav .nav-item:hover a{
+    color: var(--main-text-color);
+}
+.pointer{
+    cursor: pointer;
+}
+.carte>div{
+    margin-bottom: 10px;
+}
+.carte>div>.item{
+    background: #F9F9F9;
+    border-radius: 10px;
+}
+
+.h3{
+    font-weight: bolder;
+    color: black;
+}
+
+.p{
+    margin-top: 1vw;
+    font-weight: bolder;
+    color: black;
+    font-size: 19px;
+}
+
+.gif{
+    border-radius: 12px;
+    height: 121px;
+    width: 80%;
+    margin-bottom: 0.2vw;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.btn_{
+    width: 114px;
+    height: 38px;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.Recent_{
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #CBCBCB;
+    height: 49vh;
+    overflow: overlay;
+}
+
+.Send_again{
+    width: 80%;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #CBCBCB;
+    height: 27.5vh;
+    overflow: overlay;
+}
+
+.bank_card{
+    width: 80%;
+    height: 116px;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #CBCBCB;
+    margin-bottom: 1vw;
+}
+
+.img_container{
+    position: relative;
+    color: white;
+}
+
+.your{
+    position: absolute;
+    top: 17px;
+    left: 34px;
+}
+
+.balance{
+    position: absolute;
+    top: 64px;
+    left: 79px;
+    font-size: 34px;
+}
+
+.input_search{
+    width: 25vw;
+    height: 48px;
+    border-radius: 4px;
+    padding-left: 1.5vw;
+    margin-left: 3vw;
+    margin-right: 1vw;
+}
+
+.input_button{
+    width: 40px;
+    height: 40px;
+}
+
+.my_modal{
+    display: none;
+    width: 100%;
+    height: 50vh;
+    background-color: green;
+}
+
+
+@media only screen and (max-width: 920px) {
+    .side__bar{
+        left: -5000px;
+    }
+    .side__bar.active{
+        left: 0;
+        width: var(--width-side-bar);
+    }
+    .side__bar.active ul li a span{
+        display: block;
+    }
+    .nav__bar.active{
+        left: var(--width-side-bar);
+        width: calc(100% - var(--width-side-bar));
+    }
+    .nav__bar,
+    .main.active,
+    .main{
+        width: 100%;
+        left: 0;
+    }
+    .side__bar .logo-1{
+        display: block !important;
+    }
+    .side__bar .logo-2{
+        display: none !important;
+    }
+  }
+  
+@media only screen and (max-width: 720px) { 
+    .nav__bar .adminName span,
+    .nav__bar.active .item-admin a{
+        display: none;
+    }
+}
+.chart canvas{
+    background: var(--bg-color-side);   
+}
