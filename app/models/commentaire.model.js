@@ -1,3 +1,5 @@
+const { article } = require(".");
+
 module.exports = (sequelize, Sequelize) => {
     const commentaire = sequelize.define("commentaire", {
         id: {
@@ -22,8 +24,8 @@ module.exports = (sequelize, Sequelize) => {
   
     return commentaire;
   };
-  // / Articles.hasMany(commentaire);
-  // commentaire.belongsTo(Articles);
+  //  article.hasMany(commentaire);
+  // commentaire.belongsTo(article);
 
 
    

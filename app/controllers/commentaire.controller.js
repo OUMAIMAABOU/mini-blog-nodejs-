@@ -21,25 +21,27 @@ exports.create = (req, res) => {
         });
 };
 
-exports.findAll = (req, res) => {
+// exports.findAllcommentaire = (req, res) => {
   
-  Commentaire.findAll()
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message
-      });
-    });
-};
-
+//   Commentaire.findAll()
+//     .then(data => {
+//       res.send(data);
+//     })
+//     .catch(err => {
+//       res.send({
+//         message:
+//           err.message
+//       });
+//     });
+// };
+exports.findAllcommentaire = () => {
+  return Commentaire.findAll()
+}
 
 exports.findOne = (req, res) => {
   
 };
-exports.update = (req, res) => {
+exports.updatecommentaire = (req, res) => {
   const id = req.params.id;
   const commentaires = {
     email: req.body.email,
@@ -72,15 +74,14 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id = req.params.id;
-
   Commentaire.destroy({
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
-        res.send({
-          message: "successfully!"
-        });
+        res.redirect('/commentaire');
+
+
       } else {
         res.send({
           message: `not found!`
@@ -93,3 +94,10 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+// exports.delete = (req, res) => {
+//     const id = req.params.id;
+//    Commentaire.destroy( {where: { id: id }});
+//    console.log(id)
+//     res.render('/commentaire');
+// }

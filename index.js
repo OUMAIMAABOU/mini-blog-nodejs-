@@ -1,24 +1,15 @@
 const express = require("express");
-
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 require('dotenv').config();
-
-// app.set('views','./views/homePage')
-app.set('view engine','ejs')
-// app.use(express.static(__dirname + '/views/homePage'));
 app.use(express.static('public'))
 
+const { findAllcommentaire}   = require('./app/controllers/commentaire.controller.js')
 
-app.get("/dash", (req, res) => {
-  res.render('dashboard');
-});
-
-app.get("/", (req, res) => {
-  res.render('homePage');
-});
 const db = require("./app/models");
+
+
 db.sequelize.sync()
   .then(() => {
     console.log("create db.");
@@ -26,14 +17,29 @@ db.sequelize.sync()
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
+app.set('views','./views/dashboard')
+app.set('view engine','ejs')
+// app.use(express.static(__dirname + '/views/homePage'));
 
 
-  // db.sequelize.sync({ force: true }).then(() => {
-  //   console.log("Drop and re-sync db.");
-  // });
+app.get("/dash", (req, res) => {
+  res.render('dashboard');
+});
+
+// app.get("/", (req, res) => {
+//   res.render('homePage');
+// });
 
 
-  require("./app/routes/routes")(app);
+app.get('/commentaire', async(req, res) => {
+  let commantaire = await findAllcommentaire()
+  res.render('avisComme', {commantaire})
+})
+
+
+
+
+require("./app/routes/routes")(app);
   const port=process.env.PORT || 8080
   console.log('The value of PORT is:', process.env.PORT ,port);
 

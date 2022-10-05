@@ -23,49 +23,21 @@
                 <table style="overflow: overlay;" class="table table-striped">
                     <thead>
                         <tr class="rounded">
-                            <th scope="col">id</th>
-
-                            <th scope="col">Nom</th>
-                            <th scope="col">email</th>
-                            <th scope="col">commentaire</th>
-                            <th scope="col">delete</th>
-                            <th scope="col">update</th>
+                            <th scope="col">Target</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Process</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="rounded">
-                            <% commantaire.forEach(commantaire => { %>
-                                <tr>
-                                    <td scope="col"> <%-commantaire.id %>  </td>
-                                    <td scope="col"> <%-commantaire.nom %>  </td>
-                                    <td scope="col"> <%-commantaire.email %></td>
-                                    <td scope="col"> <%-commantaire.commentaire %></td>
-                     
-<td>                                  <a href="/commantaire/delete/<%-commantaire.id %>">Delete </a></td>
-                                 
-                             </tr>  
-
-                                   <% }) %>
-                        
+                        <h1 class="text-dark"></h1>
+        
                     </tbody>
                 </table>
                 
             </div>
         </div>
-        <form action="/commentaire" method="post">
-            <fieldset>
-              <legend>add commentaire</legend>
-              <label>
-                Username:
-                <input type="string" name="nom" />
-                <input type="string" name="email" />
-                <input type="string" name="commentaire" />
-
-
-                <input type="submit" value="Create commentaire" />
-              </label>
-            </fieldset>
-          </form>
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -73,11 +45,6 @@
                     <h5 class="modal-title" id="staticBackdropLabel">Add New Student</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <h1 class="text-dark">nom is ${commantaire.nom}</h1>
-                ${commantaire}
-
-                
-
                 <div class="modal-body">
                     <form action="" method="POST">
                     <div class="mb-3">
