@@ -13,7 +13,7 @@ module.exports = app => {
   router.post("/createArticle", article.create);
   router.post("/createCategorie", categorie.create);
 
-  router.get("/", commentaire.findAll);
+  router.get("/", commentaire.findAllcommentaire);
   router.get("/showAllAvis", avis.findAll);
   router.get("/showAllArticles", article.findAll);
   router.get("/getAllCategorie", categorie.findAll);
@@ -32,6 +32,13 @@ module.exports = app => {
   router.delete("/:id", commentaire.delete);
   // router.delete("/deleteAvis/:id" , avis.delete)
   app.get("/deleteavis/:id", avis.delete)
+  router.put("/:id", commentaire.updatecommentaire);
+  router.put("/updateAvis/:id", avis.update)
+  router.put("/updateArticle/:id", article.update)
+  router.put("/UpdateCategorie/:id", categorie.update);
+  
+  app.get("/commantaire/delete/:id", commentaire.delete);
+  router.delete("/deleteAvis/:id" , avis.delete)
   router.delete("/deleteArticle/:id" , article.delete)
   router.delete("/deleteCategorie/:id", categorie.delete);
 

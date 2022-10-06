@@ -70,14 +70,35 @@ db.sequelize.sync()
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
+app.set('views','./views/dashboard')
+app.set('view engine','ejs')
+// app.use(express.static(__dirname + '/views/homePage'));
 
 
-  // db.sequelize.sync({ force: true }).then(() => {
-  //   console.log("Drop and re-sync db.");
-  // });
+app.get("/dash", (req, res) => {
+  res.render('dashboard');
+});
+
+// app.get("/", (req, res) => {
+//   res.render('homePage');
+// });
 
 
-  require("./app/routes/routes")(app);
+app.get('/commentaire', async(req, res) => {
+  let commantaire = await findAllcommentaire()
+  res.render('avisComme', {commantaire})
+})
+app.get('/commentaire/update', async(req, res) => {
+  let commantaire = await findAllcommentaire()
+  res.render('formeupdate', {commantaire})
+})
+
+
+
+
+
+
+require("./app/routes/routes")(app);
   const port=process.env.PORT || 8080
   console.log('The value of PORT is:', process.env.PORT ,port);
 
