@@ -1,12 +1,13 @@
 const express = require("express");
-const app = express();
-app.use(express.json());
-const app2 = express();
-app2.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const dashboard = express();
+dashboard.use(express.json());
+const homePage = express();
+homePage.use(express.json());
+dashboard.use(express.urlencoded({ extended: true }));
 require('dotenv').config();
-app.use(express.static('public'))
-app2.use(express.static(__dirname + '/views/homePage'));
+dashboard.use(express.static('public'))
+homePage.use(express.static(__dirname + '/views/homePage'));
+
 const db = require("./app/models");
 
 
@@ -15,28 +16,69 @@ db.sequelize.sync()
     console.log("create db.");
   })
   .catch((err) => {
-    console.log("Failed to sync db: " + err.message);
+    console.log("db not connected " + err.message);
   });
-app.set('views','./views/dashboard')
-app.set('view engine','ejs')
-app2.set('views','./views/homePage')
-app2.set('view engine','ejs')
+
+dashboard.set('views','./views/dashboard')
+dashboard.set('view engine','ejs')
+homePage.set('views','./views/homePage')
+homePage.set('view engine','ejs')
 
 
-app.get("/dash", (req, res) => {
-  res.render('dashboard');
-});
+dashboard.set('views','./views/dashboard')
+dashboard.set('view engine','ejs')
+homePage.set('views','./views/homePage')
+homePage.set('view engine','ejs')
 
-app2.get("/", (req, res) => {
+// ________________________ homePage ______________________
+
+homePage.get("/", (req, res) => {
   res.render('homePage');
 });
-app2.get("/blog", (req, res) => {
+homePage.get("/blog", (req, res) => {
   res.render('blog_details');
 });
-require("./app/routes/routes")(app);
-  const port=process.env.PORT || 8080
-  console.log('The value of PORT is:', process.env.PORT ,port);
+// ________________________ dashboard ______________________
+// Dashboard
+dashboard.get("/", (req, res) => {
+  res.render('dashboard');
+});
+dashboard.get('/dash', (req, res) => {
+  res.render('dashboard')
+})
+dashboard.get('/settings', (req, res) => {
+  res.render('settings')
+})
+// Articles
+// dashboard.get('/articles', async(req, res) => {
+//   let commantaire = await findAllcommentaire()
+//   res.render('articles', {commantaire})
+// })
+// // Categories
+// dashboard.get('/categories', async(req, res) => {
+//   let commantaire = await findAllcommentaire()
+//   res.render('categories', {commantaire})
+// })
+// Comments
+// dashboard.get('/comments', async(req, res) => {
+//   let commantaire = await findAllcommentaire()
+//   res.render('avisComme', {commantaire})
+// })
+// dashboard.get('/commantaire/edite/:id', async(req, res) => {
+//   let commantaire = await findAllcommentaire()
+//   res.render('updatecomment', {commantaire})
+// })
 
-  app.listen(port)
-  app2.listen(3040)
+
+
+
+
+
+
+require("./app/routes/routes")(homePage);
+const port = process.env.PORT || 8080
+console.log('The value of PORT is:', process.env.PORT ,port);
+
+dashboard.listen(port)
+homePage.listen(3040)
 

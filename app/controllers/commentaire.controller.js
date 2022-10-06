@@ -10,7 +10,7 @@ exports.create = (req, res) => {
       };
           Commentaire.create(commentaires)
         .then(
-          res.redirect('/commentaire')
+          res.redirect('/comments')
         )
         .catch(err => {
           res.status(500).send({
@@ -61,7 +61,7 @@ exports.updatecommentaire = (req, res) => {
   })
     .then(num => {
       if (num == 1) {
-        res.redirect('/commentaire')
+        res.redirect('/comments')
       }
     })
     .catch(err => {
@@ -79,7 +79,7 @@ exports.delete = (req, res) => {
   })
     .then(num => {
       if (num == 1) {
-        res.redirect('/commentaire');
+        res.redirect('/comments');
       } else {
         res.send({
           message: `not found!`

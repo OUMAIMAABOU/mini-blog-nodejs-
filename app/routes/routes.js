@@ -11,7 +11,7 @@ module.exports = app => {
   router.post("/createArticle", article.create);
   router.post("/createCategorie", categorie.create);
 
-  router.get("/", commentaire.findAllcommentaire);
+  app.get("/comments", commentaire.findAllcommentaire);
   router.get("/showAllAvis", avis.findAll);
   router.get("/showAllArticles", article.findAll);
   router.get("/getAllCategorie", categorie.findAll);
@@ -31,7 +31,7 @@ module.exports = app => {
   router.delete("/deleteArticle/:id" , article.delete)
   router.delete("/deleteCategorie/:id", categorie.delete);
 
-  app.use('/commentaire', router);
+  app.use('/comments', router);
   app.use('/article', router);
   app.use('/avis', router);
   app.use('/categorie', router)

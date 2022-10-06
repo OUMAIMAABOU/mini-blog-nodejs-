@@ -6,11 +6,11 @@
     --main-border-green: #01AB68;
     --main-border-green-opp: #3c763d;
     --main-border-red: #E81400;
-    --main-border-blanchedalmond: #6CA9FA;
+    --main-border-blanchedalmond: #FF9907;
     --border-red: rgb(255, 0, 0) solid 2px;
     --border-gry: rgb(74, 67, 67) solid 2px;
     --border-blue: rgb(38, 0, 255) solid 2px;
-    --width-side-bar: 16vw;
+    --width-side-bar: 15vw;
     --width-side-bar-active: 100px;
     --height-nav-bar: 100px;
 }
