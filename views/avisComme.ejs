@@ -6,7 +6,7 @@
             <p class="">Transactions</p>
         </div>
         <div class="d-flex justify-content-end mt-3 px-5 fw-bold">
-            <button class="btn bg-info px-4 text-blod " data-bs-toggle="modal" data-bs-target="#send_to">Ajouter</button>
+            <button class="btn bg-dark px-4 text-blod" style=" color:#ff9907 ;" data-bs-toggle="modal" data-bs-target="#send_to">Ajouter</button>
         </div>
 
         <div class="table-responsive card mt-3 p-2">
@@ -28,7 +28,7 @@
                         <% commantaire.forEach(commantaire => { %>
                             <tr>
                                 <td scope="col"> <%-commantaire.id %>  </td>
-                                <td scope="col"> <%-commantaire.articleId %>  </td>
+                                <td scope="col"> <%-commantaire.article_title %>  </td>
                                 <td scope="col"> <%-commantaire.nom %>  </td>
                                 <td scope="col"> <%-commantaire.email %></td>
                                 <td scope="col"> <%-commantaire.commentaire %></td>

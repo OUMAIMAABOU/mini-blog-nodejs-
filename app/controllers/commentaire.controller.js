@@ -1,4 +1,4 @@
-const { commentaire } = require("../models");
+const { commentaire, article } = require("../models");
 const db = require("../models");
 const Commentaire = db.commentaire;
 exports.create = (req, res) => {
@@ -20,7 +20,7 @@ exports.create = (req, res) => {
         });
 };
 exports.findAllcommentaire = (req, res  ) => {
-  commentaire.findAll()
+  commentaire.findAll({include: article})
   .then(data => {
       res.render('avisComme',{'commantaire':data})
     })
