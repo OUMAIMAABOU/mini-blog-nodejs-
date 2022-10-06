@@ -16,17 +16,17 @@ module.exports = app => {
   router.get("/showAllArticles", article.findAll);
   router.get("/getAllCategorie", categorie.findAll);
 
-  app.get("/commantaire/edite/:id", commentaire.findOnecommentaire);
+  app.get("/comments/edite/:id", commentaire.findOnecommentaire);
   router.get("/gitOneAvis/:id", avis.findOne);
   router.get("/gitOneArticle/:id", article.findOne);
   router.get("/getoneCategorie/:id", categorie.findOne);
 
-  app.post("/commentaire/update", commentaire.updatecommentaire);
+  app.post("/comments/update", commentaire.updatecommentaire);
   router.put("/updateAvis/:id", avis.update)
   router.put("/updateArticle/:id", article.update)
   router.put("/UpdateCategorie/:id", categorie.update);
   
-  app.get("/commantaire/delete/:id", commentaire.delete);
+  app.get("/comments/delete/:id", commentaire.delete);
   router.delete("/deleteAvis/:id" , avis.delete)
   router.delete("/deleteArticle/:id" , article.delete)
   router.delete("/deleteCategorie/:id", categorie.delete);

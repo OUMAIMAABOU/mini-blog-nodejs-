@@ -32,10 +32,10 @@
                                 <td scope="col"> <%-commantaire.nom %>  </td>
                                 <td scope="col"> <%-commantaire.email %></td>
                                 <td scope="col"> <%-commantaire.commentaire %></td>
-                                <td><a href="/commantaire/edite/<%-commantaire.id %>">
+                                <td><a href="/comments/edite/<%-commantaire.id %>">
                                    <input type="button" class="text-info border border-3 border-info bg-white px-4 py-2 rounded-3 text-blod" value="update">
                                 </a>
-                                <a href="/commantaire/delete/<%-commantaire.id %>"><input type="button"  class="text-danger border border-3 border-danger bg-white px-4 py-2 rounded-3 text-blod" value="delete">  </a></td>
+                                <a href="/comments/delete/<%-commantaire.id %>"><input type="button"  class="text-danger border border-3 border-danger bg-white px-4 py-2 rounded-3 text-blod" value="delete">  </a></td>
                                
                          </tr>  
                                <% }) %>
@@ -55,7 +55,7 @@
             </div>
             <p class="d-flex m-0 mt-3 justify-content-center" id="warning"></p>
             <div class="modal-body">
-                <form action="/commentaire" method="post">
+                <form action="/comments" method="post">
                  
 
                     <div class="mb-3">
