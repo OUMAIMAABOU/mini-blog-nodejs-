@@ -1,12 +1,10 @@
 const express = require("express");
-const dashboard = express();
-dashboard.use(express.json());
-const homePage = express();
-homePage.use(express.json());
-dashboard.use(express.urlencoded({ extended: true }));
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 require('dotenv').config();
-dashboard.use(express.static('public'))
-homePage.use(express.static(__dirname + '/views/homePage'));
+app.use(express.static('public'))
+app.use(express.static(__dirname + '/views'));
 
 const db = require("./app/models");
 
@@ -19,66 +17,42 @@ db.sequelize.sync()
     console.log("db not connected " + err.message);
   });
 
-dashboard.set('views','./views/dashboard')
-dashboard.set('view engine','ejs')
-homePage.set('views','./views/homePage')
-homePage.set('view engine','ejs')
+app.set('views','./views')
+app.set('view engine','ejs')
 
 
-dashboard.set('views','./views/dashboard')
-dashboard.set('view engine','ejs')
-homePage.set('views','./views/homePage')
-homePage.set('view engine','ejs')
+
 
 // ________________________ homePage ______________________
 
-homePage.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.render('homePage');
 });
-homePage.get("/blog", (req, res) => {
+app.get("/blog", (req, res) => {
   res.render('blog_details');
 });
 // ________________________ dashboard ______________________
 // Dashboard
-dashboard.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.render('dashboard');
 });
-dashboard.get('/dash', (req, res) => {
+app.get('/dash', (req, res) => {
   res.render('dashboard')
 })
-dashboard.get('/settings', (req, res) => {
+app.get('/settings', (req, res) => {
   res.render('settings')
 })
 // Articles
-// dashboard.get('/articles', async(req, res) => {
-//   let commantaire = await findAllcommentaire()
-//   res.render('articles', {commantaire})
-// })
-// // Categories
-// dashboard.get('/categories', async(req, res) => {
-//   let commantaire = await findAllcommentaire()
-//   res.render('categories', {commantaire})
-// })
-// Comments
-// dashboard.get('/comments', async(req, res) => {
-//   let commantaire = await findAllcommentaire()
-//   res.render('avisComme', {commantaire})
-// })
-// dashboard.get('/commantaire/edite/:id', async(req, res) => {
-//   let commantaire = await findAllcommentaire()
-//   res.render('updatecomment', {commantaire})
-// })
-
-
-
-
-
-
-
-require("./app/routes/routes")(homePage);
+app.get('/articles', async(req, res) => {
+  res.render('articles')
+})
+// Categories
+app.get('/categories', async(req, res) => {
+  res.render('categories')
+})
+require("./app/routes/routes")(app);
 const port = process.env.PORT || 8080
 console.log('The value of PORT is:', process.env.PORT ,port);
 
-dashboard.listen(port)
-homePage.listen(3040)
+app.listen(port)
 
