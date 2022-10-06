@@ -1,13 +1,15 @@
 module.exports = app => {
   var router = require("express").Router();
+  
   const commentaire = require("../controllers/commentaire.controller.js");
   const categorie = require("../controllers/categorie.controller.js");
-  const avis = require('../controllers/avis.controller')
+  const avis = require('../controllers/avis.controller.js')
   const article = require('../controllers/article.controller')
 
   
   router.post("/", commentaire.create);
-  router.post("/createAvis", avis.create);
+  // router.post("/createAvis", avis.create);
+  app.get("/createAvis" , avis.create)
   router.post("/createArticle", article.create);
   router.post("/createCategorie", categorie.create);
 
@@ -22,12 +24,14 @@ module.exports = app => {
   router.get("/getoneCategorie/:id", categorie.findOne);
 
   router.put("/:id", commentaire.update);
-  router.put("/updateAvis/:id", avis.update)
+  // router.put("/updateAvis/:id", avis.update)
+  app.get("/updateavis/:id", avis.update)
   router.put("/updateArticle/:id", article.update)
   router.put("/UpdateCategorie/:id", categorie.update);
 
   router.delete("/:id", commentaire.delete);
-  router.delete("/deleteAvis/:id" , avis.delete)
+  // router.delete("/deleteAvis/:id" , avis.delete)
+  app.get("/deleteavis/:id", avis.delete)
   router.delete("/deleteArticle/:id" , article.delete)
   router.delete("/deleteCategorie/:id", categorie.delete);
 
@@ -35,4 +39,6 @@ module.exports = app => {
   app.use('/article', router);
   app.use('/avis', router);
   app.use('/categorie', router)
+
+ 
 };

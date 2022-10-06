@@ -18,6 +18,7 @@
                     <p class="m-0">entities</p>
                 </div>
             </div>
+            <a href="/createAvis<%= avis.create %>" class="btn btn-sm btn-primary">create</a>
 
             <div class="table-responsive card mt-3 p-2">
                 <table style="overflow: overlay;" class="table table-striped">
@@ -31,12 +32,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                      
+                        <% avis.forEach(function(avis){ %>
+                            <tr>
+                                <td><%= avis.id %></td>
+                                <td><%= avis.name %></td>
+                                <td><%= avis.email %></td>
+                                <td><%= avis.avie %></td>
+                                <td>
+                                    <a href="edit/<%= avis.id %>" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="/deleteavis/<%= avis.id %>" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        <% }); %>
                     </tbody>
                 </table>
                 
             </div>
         </div>
+        
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

@@ -21,27 +21,29 @@ exports.create = (req, res) => {
                     err.message || "Some error occurred while creating the Avis."
             })
         })
+
 };
 
 exports.show = (req, res) => {
     console.log('hi admiral')
 };
 
-exports.findAll = (req, res) => {
-    const name = req.query.name;
-    let condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
-
-    avis.findAll({ where: condition })
-        .then(data => { res.send(data) })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "some error occurred while retrieving avis"
-            })
-        })
+exports.findAll = () => {
+    // const name = req.query.name;
+    // let condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
+    // avis.findAll({ where: condition })
+    //     .then(data => { res.send(data) })
+    //     .catch(err => {
+    //         res.status(500).send({
+    //             message:
+    //                 err.message
+    //         })
+    //     })
+        // console.log(name)
+       return avis.findAll()
 };
 
-exports.findOne = (req, res) => {
+exports.findOne = () => {
     const id = req.params.id;
 
     avis.findByPk(id)
@@ -59,6 +61,7 @@ exports.findOne = (req, res) => {
                 message: "Error retrieving avis with id=" + id
             });
         });
+    
 };
 
 exports.update = (req, res) => {
@@ -83,6 +86,7 @@ exports.update = (req, res) => {
                 message: "Error updating avis with id=" + id
             });
         });
+    
 };
 
 exports.delete = (req, res) => {
@@ -93,9 +97,7 @@ exports.delete = (req, res) => {
     })
     .then(num => {
         if(num == 1){
-            res.send({
-                message : "Avis was deleted successfully!"
-            });
+            res.redirect('/aviscoome')
         }else{
             res.send({
                 message : `Cannot delete Avis with id=${id}. Maybe Avis was not found!`
@@ -108,3 +110,11 @@ exports.delete = (req, res) => {
         });
     });
 };
+
+
+
+exports.test = (req,res)=>{
+    const id = req.params.id
+    res.send(id)
+    console.log(id)
+}
