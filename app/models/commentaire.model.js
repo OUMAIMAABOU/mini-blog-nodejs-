@@ -1,5 +1,4 @@
-const { article } = require(".");
-
+article = require('./article.model')
 module.exports = (sequelize, Sequelize) => {
     const commentaire = sequelize.define("commentaire", {
         id: {
@@ -8,6 +7,7 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true
    
           },
+       
           email: {
             type:Sequelize.STRING,
             allowNull: false
@@ -21,11 +21,11 @@ module.exports = (sequelize, Sequelize) => {
            allowNull: false
          }
     });
-  
+  //   article.hasMany(commentaire);
+  // commentaire.belongsTo(article);
     return commentaire;
   };
-  //  article.hasMany(commentaire);
-  // commentaire.belongsTo(article);
+ 
 
 
    

@@ -20,53 +20,21 @@
             </div>
 
             <div class="table-responsive card mt-3 p-2">
-                <table style="overflow: overlay;" class="table table-striped">
-                    <thead>
-                        <tr class="rounded">
-                            <th scope="col">id</th>
-
-                            <th scope="col">Nom</th>
-                            <th scope="col">email</th>
-                            <th scope="col">commentaire</th>
-                            <th scope="col">delete</th>
-                            <th scope="col">update</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="rounded">
-                            <% commantaire.forEach(commantaire => { %>
-                                <tr>
-                                    <td scope="col"> <%-commantaire.id %>  </td>
-                                    <td scope="col"> <%-commantaire.nom %>  </td>
-                                    <td scope="col"> <%-commantaire.email %></td>
-                                    <td scope="col"> <%-commantaire.commentaire %></td>
-                     
-<td>                                  <a href="/commantaire/delete/<%-commantaire.id %>">Delete </a></td>
-                                      <td><a href="/commantaire/edite/<%-commantaire.id %>">Update</a></td>
-
-                             </tr>  
-
-                                   <% }) %>
-                        
-                    </tbody>
-                </table>
+                
                 
             </div>
         </div>
-        <form action="/commentaire" method="post">
+        <form action="/commentaire/update" method="post">
             <fieldset>
-              <legend>add commentaire</legend>
-              <label>
-                Username:
-                <input type="string" name="nom" />
-                <input type="string" name="email" />
-                <input type="string" name="commentaire" />
+              <legend>UPDATE commentaire</legend>
+                
+                <label>
+                <input type="text" name="nomup" />
+                <input type="text" name="emailup" />
+                <input type="text" name="commentaireup" />
 
 
-                <input type="submit" value="Create commentaire" />
-              </label>
-            </fieldset>
-          </form>
+                <input type="submit" value="update commentaire" />
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -74,8 +42,8 @@
                     <h5 class="modal-title" id="staticBackdropLabel">Add New Student</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <h1 class="text-dark">nom is ${commantaire.nom}</h1>
-                ${commantaire}
+                <h1 class="text-dark"></h1>
+               
 
                 
 

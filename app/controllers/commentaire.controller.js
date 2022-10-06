@@ -11,9 +11,9 @@ exports.create = (req, res) => {
         commentaire: req.body.commentaire 
       };
           Commentaire.create(commentaires)
-        .then(data => {
-          res.send(data);
-        })
+        .then(
+          res.redirect('/commentaire')
+        )
         .catch(err => {
           res.status(500).send({
             message:
@@ -22,27 +22,18 @@ exports.create = (req, res) => {
         });
 };
 
-// exports.findAllcommentaire = (req, res) => {
-  
-//   Commentaire.findAll()
-//     .then(data => {
-//       res.send(data);
-//     })
-//     .catch(err => {
-//       res.send({
-//         message:
-//           err.message
-//       });
-//     });
-// };
+
 exports.findAllcommentaire = () => {
   return Commentaire.findAll()
 
 }
 
-exports.findOne = (req, res) => {
-
+exports.findOnecommentaire = (req, res) => {
+  const id = req.params.id;
+console.log(req.params.id)
+  return Commentaire.findByPk(id)
 };
+
 exports.updatecommentaire = (req, res) => {
   const id = req.params.id;
   const commentaires = {
@@ -52,17 +43,11 @@ exports.updatecommentaire = (req, res) => {
   };
 
   Commentaire.update(commentaires, {
-    where: { id: id }
+    where: { id : id }
   })
     .then(num => {
       if (num == 1) {
-        res.send({
-          message: " updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update `
-        });
+        res.redirect('/commentaire')
       }
     })
     .catch(err => {

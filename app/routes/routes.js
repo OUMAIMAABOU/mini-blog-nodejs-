@@ -16,12 +16,12 @@ module.exports = app => {
   router.get("/showAllArticles", article.findAll);
   router.get("/getAllCategorie", categorie.findAll);
 
-  router.get("/:id", commentaire.findOne);
+  // app.get("/commantaire/edite/:id", commentaire.findOne);
   router.get("/gitOneAvis/:id", avis.findOne);
   router.get("/gitOneArticle/:id", article.findOne);
   router.get("/getoneCategorie/:id", categorie.findOne);
 
-  router.put("/:id", commentaire.updatecommentaire);
+  app.post("/commentaire/update", commentaire.updatecommentaire);
   router.put("/updateAvis/:id", avis.update)
   router.put("/updateArticle/:id", article.update)
   router.put("/UpdateCategorie/:id", categorie.update);
