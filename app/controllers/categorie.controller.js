@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
     exports.create = (req, res) => {
         const categories = {
             name: req.body.name,
-            id_article: req.body.id_article,
+            
         };
         Categorie.create(categories).then(data => {
             res.send(data);
@@ -53,7 +53,6 @@ const Op = db.Sequelize.Op;
         });
     };
 
-
     exports.test_id = (req,res) =>{
         const id = req.params.id;
         res.redirct("/")
@@ -91,9 +90,7 @@ const Op = db.Sequelize.Op;
         where: { id: id }})
         .then(num => {
             if (num == 1) {
-            res.send({
-                message: "Categorie was deleted successfully!"
-            });
+            res.redirct('/table_categorie')
             } else {
             res.send({
                 message: `Cannot delete Categorie with id=${id}. Maybe Categorie was not found!`

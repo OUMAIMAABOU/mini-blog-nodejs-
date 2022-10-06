@@ -4,10 +4,7 @@ module.exports = (sequelize,Sequelize) => {
             type:Sequelize.STRING,
             allowNull: false
             },
-            id_article: {
-                type:Sequelize.STRING,
-                allowNull: false
-                },
+            
         });
     return categorie;
 };
