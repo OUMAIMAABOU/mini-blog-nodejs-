@@ -7,10 +7,6 @@ app.use(express.urlencoded({ extended: true }));
 require('dotenv').config();
 app.use(express.static('public'))
 app2.use(express.static(__dirname + '/views/homePage'));
-
-
-// const { findAllcommentaire}   = require('./app/controllers/commentaire.controller.js')
-
 const db = require("./app/models");
 
 

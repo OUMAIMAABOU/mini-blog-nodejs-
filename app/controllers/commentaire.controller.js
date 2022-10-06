@@ -1,14 +1,12 @@
 const { commentaire } = require("../models");
 const db = require("../models");
 const Commentaire = db.commentaire;
-const Op = db.Sequelize.Op;
-
-
 exports.create = (req, res) => {
     const commentaires = {
         email: req.body.email,
         nom: req.body.nom,
-        commentaire: req.body.commentaire 
+        commentaire: req.body.commentaire,
+        articleId:"1"
       };
           Commentaire.create(commentaires)
         .then(
@@ -21,24 +19,18 @@ exports.create = (req, res) => {
           });
         });
 };
-
-
 exports.findAllcommentaire = (req, res  ) => {
   commentaire.findAll()
   .then(data => {
       res.render('avisComme',{'commantaire':data})
     })
 .catch(err => {
-
       console.log(err )  
-    
 });
-
 }
 
 exports.findOnecommentaire = (req, res) => {
 const id = req.params.id;
-
 commentaire.findByPk(id)
     .then(data => {
         if (data) {
@@ -60,7 +52,8 @@ exports.updatecommentaire = (req, res) => {
   const commentaires = {
     email: req.body.email,
     nom: req.body.nom,
-    commentaire: req.body.commentaire 
+    commentaire: req.body.commentaire, 
+    articleId:"1"
   };
 
   Commentaire.update(commentaires, {
@@ -99,4 +92,4 @@ exports.delete = (req, res) => {
       });
     });
 };
-
+Commentaire.belongsTo(db.article); 

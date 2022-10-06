@@ -15,6 +15,8 @@
                     <thead>
                         <tr class="rounded">
                             <th scope="col">id</th>
+                            <th scope="col">idARTCLE</th>
+
                             <th scope="col">Nom</th>
                             <th scope="col">email</th>
                             <th scope="col">commentaire</th>
@@ -27,6 +29,8 @@
                             <% commantaire.forEach(commantaire => { %>
                                 <tr>
                                     <td scope="col"> <%-commantaire.id %>  </td>
+                                    <td scope="col"> <%-commantaire.articleId %>  </td>
+
                                     <td scope="col"> <%-commantaire.nom %>  </td>
                                     <td scope="col"> <%-commantaire.email %></td>
                                     <td scope="col"> <%-commantaire.commentaire %></td>
