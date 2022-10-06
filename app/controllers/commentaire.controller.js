@@ -23,19 +23,40 @@ exports.create = (req, res) => {
 };
 
 
-exports.findAllcommentaire = () => {
-  return Commentaire.findAll()
+exports.findAllcommentaire = (req, res  ) => {
+  commentaire.findAll()
+  .then(data => {
+      res.render('avisComme',{'commantaire':data})
+    })
+.catch(err => {
+
+      console.log(err )  
+    
+});
 
 }
 
 exports.findOnecommentaire = (req, res) => {
-  const id = req.params.id;
-console.log(req.params.id)
-  return Commentaire.findByPk(id)
+const id = req.params.id;
+
+commentaire.findByPk(id)
+    .then(data => {
+        if (data) {
+          res.render('updatecomment',{'data':data})
+        } else {
+            res.status(404).send({
+                message: `Cannot find avis with id=${id}.`
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Error retrieving avis with id=" + id
+        });
+    });
 };
 
 exports.updatecommentaire = (req, res) => {
-  const id = req.params.id;
   const commentaires = {
     email: req.body.email,
     nom: req.body.nom,
@@ -43,7 +64,7 @@ exports.updatecommentaire = (req, res) => {
   };
 
   Commentaire.update(commentaires, {
-    where: { id : id }
+    where: { id : req.body.id }
   })
     .then(num => {
       if (num == 1) {
@@ -60,15 +81,12 @@ exports.updatecommentaire = (req, res) => {
 
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
   Commentaire.destroy({
-    where: { id: id }
+    where: { id: req.params.id }
   })
     .then(num => {
       if (num == 1) {
         res.redirect('/commentaire');
-
-
       } else {
         res.send({
           message: `not found!`

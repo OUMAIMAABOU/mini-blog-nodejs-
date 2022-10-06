@@ -9,7 +9,7 @@ app.use(express.static('public'))
 app2.use(express.static(__dirname + '/views/homePage'));
 
 
-const { findAllcommentaire,findOnecommentaire}   = require('./app/controllers/commentaire.controller.js')
+// const { findAllcommentaire}   = require('./app/controllers/commentaire.controller.js')
 
 const db = require("./app/models");
 
@@ -37,23 +37,6 @@ app2.get("/", (req, res) => {
 app2.get("/blog", (req, res) => {
   res.render('blog_details');
 });
-
-
-app.get('/commentaire', async(req, res) => {
-  let commantaire = await findAllcommentaire()
-  res.render('avisComme', {commantaire})
-})
-app.get('/commantaire/edite/:id', async(req, res) => {
-  let commantaire = await findAllcommentaire()
-  res.render('updatecomment', {commantaire})
-})
-
-
-
-
-
-
-
 require("./app/routes/routes")(app);
   const port=process.env.PORT || 8080
   console.log('The value of PORT is:', process.env.PORT ,port);
