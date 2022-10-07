@@ -1,18 +1,17 @@
+const { commentaire, article } = require("../models");
 const db = require("../models");
 const Commentaire = db.commentaire;
-const Op = db.Sequelize.Op;
-
-
 exports.create = (req, res) => {
     const commentaires = {
         email: req.body.email,
         nom: req.body.nom,
-        commentaire: req.body.commentaire 
+        commentaire: req.body.commentaire,
+        articleId:"1"
       };
           Commentaire.create(commentaires)
-        .then(data => {
-          res.send(data);
-        })
+        .then(
+          res.redirect('/comments')
+        )
         .catch(err => {
           res.status(500).send({
             message:
@@ -20,48 +19,51 @@ exports.create = (req, res) => {
           });
         });
 };
-
-// exports.findAllcommentaire = (req, res) => {
-  
-//   Commentaire.findAll()
-//     .then(data => {
-//       res.send(data);
-//     })
-//     .catch(err => {
-//       res.send({
-//         message:
-//           err.message
-//       });
-//     });
-// };
-exports.findAllcommentaire = () => {
-  return Commentaire.findAll()
-
+exports.findAllcommentaire = (req, res  ) => {
+  commentaire.findAll({ order: [
+    ['id', 'DESC']
+],})
+  .then(data => {
+      res.render('avisComme',{'commantaire':data})
+    })
+.catch(err => {
+      console.log(err )  
+});
 }
 
-exports.findOne = (req, res) => {
-  
+exports.findOnecommentaire = (req, res) => {
+const id = req.params.id;
+commentaire.findByPk(id)
+    .then(data => {
+        if (data) {
+          res.render('updatecomment',{'data':data})
+        } else {
+            res.status(404).send({
+                message: `Cannot find avis with id=${id}.`
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Error retrieving avis with id=" + id
+        });
+    });
 };
+
 exports.updatecommentaire = (req, res) => {
-  const id = req.params.id;
   const commentaires = {
     email: req.body.email,
     nom: req.body.nom,
-    commentaire: req.body.commentaire 
+    commentaire: req.body.commentaire, 
+    articleId:"1"
   };
 
   Commentaire.update(commentaires, {
-    where: { id: id }
+    where: { id : req.body.id }
   })
     .then(num => {
       if (num == 1) {
-        res.send({
-          message: " updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update `
-        });
+        res.redirect('/comments')
       }
     })
     .catch(err => {
@@ -74,15 +76,12 @@ exports.updatecommentaire = (req, res) => {
 
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
   Commentaire.destroy({
-    where: { id: id }
+    where: { id: req.params.id }
   })
     .then(num => {
       if (num == 1) {
-        res.redirect('/commentaire');
-
-
+        res.redirect('/comments');
       } else {
         res.send({
           message: `not found!`
@@ -95,10 +94,4 @@ exports.delete = (req, res) => {
       });
     });
 };
-
-// exports.delete = (req, res) => {
-//     const id = req.params.id;
-//    Commentaire.destroy( {where: { id: id }});
-//    console.log(id)
-//     res.render('/commentaire');
-// }
+Commentaire.belongsTo(db.article); 

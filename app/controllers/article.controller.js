@@ -1,13 +1,13 @@
 const { article } = require('../models');
 const db = require('../models');
+const slug = require('slug')
+
 const Article = db.article;
-
-
 exports.create = (req, res) => {
     const article = {
-        email: req.body.email,
-        nom: req.body.nom,
-        article: req.body.article 
+      article_url: slug(req.body.title),
+      article_title: req.body.title,
+      article_contenu: req.body.contenu 
       };
       article.create(article)
         .then(data => {
@@ -41,9 +41,9 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
   const article = {
-    email: req.body.email,
-    nom: req.body.nom,
-    article: req.body.article 
+    article_url: slug(req.body.title),
+    article_title: req.body.title,
+    article_contenu: req.body.contenu 
   };
 
   Article.update(article, {
