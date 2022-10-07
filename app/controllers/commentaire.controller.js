@@ -53,7 +53,7 @@ exports.updatecommentaire = (req, res) => {
     email: req.body.email,
     nom: req.body.nom,
     commentaire: req.body.commentaire, 
-    articleId:"1"
+    // articleId:"1"
   };
 
   Commentaire.update(commentaires, {
@@ -92,4 +92,4 @@ exports.delete = (req, res) => {
       });
     });
 };
-Commentaire.belongsTo(db.article); 
+// Commentaire.belongsTo(db.article); 
