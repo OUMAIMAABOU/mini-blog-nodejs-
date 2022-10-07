@@ -20,7 +20,9 @@ exports.create = (req, res) => {
         });
 };
 exports.findAllcommentaire = (req, res  ) => {
-  commentaire.findAll({include: article})
+  commentaire.findAll({ order: [
+    ['id', 'DESC']
+],})
   .then(data => {
       res.render('avisComme',{'commantaire':data})
     })
