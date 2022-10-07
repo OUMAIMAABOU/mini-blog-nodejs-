@@ -6,9 +6,6 @@ require('dotenv').config();
 app.set('views','./views')
 app.set('view engine','ejs')
 app.use(express.static('public'))
-
-const {findAll} = require("./app/controllers/categorie.controller");
-const { findAllcommentaire}   = require('./app/controllers/commentaire.controller.js')
 app.use(express.static(__dirname + '/views'));
 
 const db = require("./app/models");
@@ -21,13 +18,6 @@ db.sequelize.sync()
   .catch((err) => {
     console.log("db not connected " + err.message);
   });
- 
-  
-  app.set('views','./views/table_categorie')
-  app.set('views','./views/homePage')
-app.set('views','./views/dashboard')
-app.set('view engine','ejs')
-// app.use(express.static(__dirname + '/views'));
 
 app.set('views','./views')
 app.set('view engine','ejs')
@@ -35,9 +25,6 @@ app.set('view engine','ejs')
 
 
 
-app.get('/commentaire', async(req, res) => {
-  let commantaire = await findAllcommentaire()
-  res.render('avisComme', {commantaire})
 // ________________________ homePage ______________________
 
 app.get("/", (req, res) => {
