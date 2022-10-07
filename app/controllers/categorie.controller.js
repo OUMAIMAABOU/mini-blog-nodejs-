@@ -9,7 +9,7 @@ const Op = db.Sequelize.Op;
             
         };
         Categorie.create(categories).then(data => {
-            res.send(data);
+            res.redirect('/table_categorie');
         })
         .catch(err => {
             res.status(500).send({
@@ -39,7 +39,7 @@ const Op = db.Sequelize.Op;
         categorie.findByPk(id)
         .then(data => {
             if (data) {
-            res.send(data);
+                res.render('categorie_update', {'categorie': data});
             } else {
             res.status(404).send({
                 message: `Cannot find Tutorial with id=${id}.`
@@ -60,20 +60,20 @@ const Op = db.Sequelize.Op;
     }
 
     exports.update = (req, res) => {
-        const id = req.params.id;
+        const id =req.body.id;
     
         categorie.update(req.body, {
         where: { id: id }
         })
         .then(num => {
             if (num == 1) {
-            res.send({
-                message: "categorie was updated successfully."
-            });
+                res.redirect('/table_categorie');
             } else {
             res.send({
                 message: `Cannot update categorie with id=${id}. Maybe categorie was not found or req.body is empty!`
             });
+                // res.redirect('/table_categorie');
+
             }
         })
         .catch(err => {
@@ -90,16 +90,16 @@ const Op = db.Sequelize.Op;
         where: { id: id }})
         .then(num => {
             if (num == 1) {
-            res.redirct('/table_categorie')
-            } else {
-            res.send({
-                message: `Cannot delete Categorie with id=${id}. Maybe Categorie was not found!`
-            });
-            }
+            res.redirect('/table_categorie');
+
+            } 
+           
         })
         .catch(err => {
             res.status(500).send({
             message: "Could not delete Categorie with id=" + id
             });
+           
+
         });
     };

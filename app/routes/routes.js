@@ -21,12 +21,14 @@ module.exports = app => {
   router.get("/:id", commentaire.findOne);
   router.get("/gitOneAvis/:id", avis.findOne);
   router.get("/gitOneArticle/:id", article.findOne);
-  router.get("/getoneCategorie/:id", categorie.findOne);
+  app.get("/getoneCategorie/:id", categorie.findOne);
 
   // router.put("/:id", commentaire.update);
   router.put("/updateAvis/:id", avis.update)
   router.put("/updateArticle/:id", article.update)
-  router.put("/UpdateCategorie/:id", categorie.update);
+  // router.put("/UpdateCategorie/:id", categorie.update);
+  router.post("/UpdateCategorie", categorie.update);
+
 
   router.delete("/:id", commentaire.delete);
   router.delete("/deleteAvis/:id" , avis.delete)

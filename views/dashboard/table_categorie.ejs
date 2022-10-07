@@ -34,8 +34,8 @@
                         <% categorie.forEach(function(categorie) { %>
                             <tr>
                             <td><%= categorie.name %></td>
-                            <td>delete</td>
-                             <td> <a href="deleteCategorie/<%= categorie.id %>">delete</a> </td>
+                            <td><a href="getoneCategorie/<%= categorie.id %>">Update</a></td>
+                             <td> <a href="deleteCategorie/<%= categorie.id %>">Delete</a> </td>
                         </tr>
                             <% }); %> 
                     </tbody>
@@ -43,6 +43,33 @@
                 
             </div>
         </div>
+<!-- add categorie -->
+  <form action="/categorie/createCategorie" method="post">
+            <fieldset>
+              <legend>Add categorie</legend>
+              <label>
+                Username:
+                <input type="string" name="name" />
+                
+                <input type="submit" value="Send" />
+              </label>
+            </fieldset>
+          </form>
+<!-- add categorie -->
+<!-- update categorie -->
+<!-- <form action="/categorie/UpdateCategorie" method="post">
+    <fieldset>
+      <legend>update categorie</legend>
+      <label>
+        Username:
+        <input type="string" name="name" value="<%= categorie.name %>" />
+        
+        <input type="submit" value="Send" />
+      </label>
+    </fieldset>
+  </form> -->
+<!-- update categorie -->
+
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
