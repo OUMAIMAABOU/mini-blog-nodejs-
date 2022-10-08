@@ -44,9 +44,9 @@
 .avis .edit:hover{
   text-decoration: underline;
 }
-.avis .star-widget input{
+/* .avis .star-widget input{
   display: none;
-}
+} */
 .star-widget label{
   font-size: 19px;
   color: #444;
@@ -65,7 +65,7 @@ input#rate-5:checked ~ label{
   color: #fe7;
   text-shadow: 0 0 20px #952;
 }
-/* #rate-1:checked ~ form header:before{
+#rate-1:checked ~ form header:before{
   content: "I just hate it ";
 }
 #rate-2:checked ~ form header:before{
@@ -79,7 +79,7 @@ input#rate-5:checked ~ label{
 }
 #rate-5:checked ~ form header:before{
   content: "I just love it ";
-} */
+}
 .avis form{
   display: none;
 }
@@ -102,7 +102,7 @@ form .textarea{
 }
 form .textarea textarea{
   height: 100%;
-  width: 100%;
+  width: 90%;
   outline: none;
   color: #eee;
   border: 1px solid #333;
@@ -110,6 +110,7 @@ form .textarea textarea{
   padding: 10px;
   font-size: 17px;
   resize: none;
+  margin: 5px 12px;
 }
 .textarea textarea:focus{
   border-color: #444;
@@ -118,6 +119,15 @@ form .btn{
   height: 45px;
   width: 100%;
   margin: 15px 0;
+}
+input.comme {
+  margin: 7px 11px;
+  padding: 8px 16px;
+  width: 91%;
+  background: #222222;
+  outline: none;
+  border: none;
+  color: #f9f9ff;
 }
 form .btn button{
   height: 100%;
