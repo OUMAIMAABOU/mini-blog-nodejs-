@@ -42,12 +42,12 @@
                         <td scope="col"> <%-article.url %>  </td>
                         <td scope="col"> <%-article.contenu %></td>
                         <td>
-                            <a href="/comments/edite/<%-article.id %>">
+                            <a href="/articles/edite/<%-article.id %>">
                             <input type="button" class="text-info border border-3 border-info bg-white px-4 py-2 rounded-3 text-blod" value="update">
                             </a>
                         </td>
                         <td>
-                            <a href="/comments/delete/<%-article.id %>"><input type="button"  class="text-danger border border-3 border-danger bg-white px-4 py-2 rounded-3 text-blod" value="delete">  </a></td>
+                            <a href="/articles/delete/<%-article.id %>"><input type="button"  class="text-danger border border-3 border-danger bg-white px-4 py-2 rounded-3 text-blod" value="delete">  </a></td>
                         </td>
                     </tr>  
                     <% }) %>
@@ -64,7 +64,7 @@
             </div>
             <p class="d-flex m-0 mt-3 justify-content-center" id="warning"></p>
             <div class="modal-body">
-                <form action="/articles" method="post">
+                <form action="/articles/createArticle" method="post">
                     <div class="mb-3">
                         <label for="amount" class="form-label">title</label>
                         <input type="text"  class="form-control"  name="title" >

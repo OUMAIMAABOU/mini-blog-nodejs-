@@ -1,6 +1,7 @@
 const { commentaire, article } = require("../models");
 const db = require("../models");
 const Commentaire = db.commentaire;
+
 exports.create = (req, res) => {
     const commentaires = {
         email: req.body.email,
@@ -94,4 +95,5 @@ exports.delete = (req, res) => {
       });
     });
 };
+
 Commentaire.belongsTo(db.article); 

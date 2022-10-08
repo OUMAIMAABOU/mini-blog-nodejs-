@@ -8,7 +8,7 @@ module.exports = app => {
   
   router.post("/", commentaire.create);
   router.post("/createAvis", avis.create);
-  router.post("/", article.create);
+  router.post("/createArticle", article.create);
   router.post("/createCategorie", categorie.create);
 
   app.get("/comments",commentaire.findAllcommentaire);
@@ -17,18 +17,18 @@ module.exports = app => {
   app.get("/categories", categorie.findAllCategories);
 
   app.get("/comments/edite/:id", commentaire.findOnecommentaire);
+  app.get("/articles/edite/:id", article.findOneArticle);
   router.get("/gitOneAvis/:id", avis.findOne);
-  router.get("/gitOneArticle/:id", article.findOne);
   router.get("/getoneCategorie/:id", categorie.findOne);
 
   app.post("/comments/update", commentaire.updatecommentaire);
+  app.post("/articles/update", article.UpdateArticle);
   router.put("/updateAvis/:id", avis.update)
-  router.put("/updateArticle/:id", article.update)
   router.put("/UpdateCategorie/:id", categorie.update);
   
   app.get("/comments/delete/:id", commentaire.delete);
+  app.get("/articles/delete/:id", article.delete);
   router.delete("/deleteAvis/:id" , avis.delete)
-  router.delete("/deleteArticle/:id" , article.delete)
   router.delete("/deleteCategorie/:id", categorie.delete);
 
   app.use('/comments', router);

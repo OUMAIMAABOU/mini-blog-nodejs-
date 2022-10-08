@@ -34,30 +34,38 @@ exports.findAllArticles = (req, res  ) => {
 });
 }
 
-exports.findOne = (req, res) => {
-  
-};
-
-exports.update = (req, res) => {
+exports.findOneArticle = (req, res) => {
   const id = req.params.id;
+  article.findByPk(id)
+      .then(data => {
+          if (data) {
+            res.render('updateArticle',{'data':data})
+          } else {
+              res.status(404).send({
+                  message: `Cannot find avis with id=${id}.`
+              });
+          }
+      })
+      .catch(err => {
+          res.status(500).send({
+              message: "Error retrieving avis with id=" + id
+          });
+      });
+  };
+
+exports.UpdateArticle = (req, res) => {
   const article = {
-    article_url: slug(req.body.title),
-    article_title: req.body.title,
-    article_contenu: req.body.contenu 
+    title: req.body.title,
+    url: req.body.url,
+    contenu: req.body.contenu,
   };
 
   Article.update(article, {
-    where: { id: id }
+    where: { id : req.body.id }
   })
     .then(num => {
       if (num == 1) {
-        res.send({
-          message: "updated successfully."
-        });
-      } else {
-        res.send({
-          message: `cant update`
-        });
+        res.redirect('/articles')
       }
     })
     .catch(err => {
@@ -68,16 +76,12 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
-
   Article.destroy({
-    where: { id: id }
+    where: { id: req.params.id }
   })
     .then(num => {
       if (num == 1) {
-        res.send({
-          message: "successfully deleted!"
-        });
+        res.redirect('/articles');
       } else {
         res.send({
           message: `not found!`
@@ -86,7 +90,7 @@ exports.delete = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        message: " id=" + id + "not existe"
+        message: " id=" + id +"not existe"
       });
     });
 };
