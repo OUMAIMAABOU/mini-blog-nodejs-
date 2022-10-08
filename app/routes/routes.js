@@ -15,7 +15,7 @@ module.exports = app => {
   app.get("/comments", commentaire.findAllcommentaire);
   router.get("/showAllAvis", avis.findAll);
   router.get("/showAllArticles", article.findAll);
-  app.get("/categories", categorie.findAllCategories);
+  app.get("/categories", categorie.findAllCategoriesdash);
   app.get("/", categorie.findAllCategorieshome);
   
 

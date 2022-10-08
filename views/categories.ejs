@@ -12,7 +12,7 @@
             <table style="overflow: overlay;" class="table table-striped" id="myTable">
                 <thead>
                     <tr class="rounded">
-                        <th scope="col">id</th>
+                        
                         <th scope="col">Nom</th>
                         
                         <th scope="col">update</th>
@@ -23,13 +23,11 @@
                     <tr class="rounded">
                         <% categories.forEach(categorie => { %>
                             <tr>
-                                <td scope="col"> <%-categorie.id %>  </td>
+                                
                                 <td scope="col"> <%-categorie.name %>  </td>
                                 
-                                <td><a href="/getoneCategorie/<%-categorie.id %>">
-                                   <input type="button" class="text-info border border-3 border-info bg-white px-4 py-2 rounded-3 text-blod" value="update">
-                                </a>
-                                <a href="/deleteCategorie/<%-categorie.id %>"><input type="button"  class="text-danger border border-3 border-danger bg-white px-4 py-2 rounded-3 text-blod" value="delete">  </a></td>
+                                <td><a href="/getoneCategorie/<%-categorie.id %>"><input type="button" class="text-info border border-3 border-info bg-white px-4 py-2 rounded-3 text-blod" value="update"></a></td>
+                                <td><a href="/deleteCategorie/<%-categorie.id %>"><input type="button"  class="text-danger border border-3 border-danger bg-white px-4 py-2 rounded-3 text-blod" value="delete"></a></td>
                                
                          </tr>  
                                <% }) %>

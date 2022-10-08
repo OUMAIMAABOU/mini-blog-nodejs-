@@ -22,7 +22,7 @@ const Op = db.Sequelize.Op;
             });
     };
 
-    exports.findAllCategories = (req, res  ) => {
+    exports.findAllCategoriesdash = (req, res  ) => {
         categorie.findAll({ order: [
           ['id', 'DESC']
       ],})
