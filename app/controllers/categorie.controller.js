@@ -34,6 +34,18 @@ const Op = db.Sequelize.Op;
       });
       }
 
+      exports.findAllCategorieshome = (req, res  ) => {
+        categorie.findAll({ order: [
+          ['id', 'DESC']
+      ],})
+        .then(data => {
+            res.render('homePage',{'categories':data})
+          })
+      .catch(err => {
+            console.log(err )  
+      });
+      }
+
     exports.findOnecategorie = (req, res) => {
         const id = req.params.id;
     

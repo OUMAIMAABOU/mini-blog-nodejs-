@@ -16,6 +16,8 @@ module.exports = app => {
   router.get("/showAllAvis", avis.findAll);
   router.get("/showAllArticles", article.findAll);
   app.get("/categories", categorie.findAllCategories);
+  app.get("/", categorie.findAllCategorieshome);
+  
 
   app.get("/comments/edite/:id", commentaire.findOnecommentaire);
   router.get("/gitOneAvis/:id", avis.findOne);
