@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="vendors/linericon/style.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -156,13 +155,13 @@
               <div class="thumb">
                 <img class="img-fluid" src="img/blog/blog1.png" alt="">
                 <ul class="thumb-info">
-                  <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                  <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
-                  <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
+                  <li><a href="/article/<%-article.url%>"><i class="ti-user"></i>Admin</a></li>
+                  <li><a href="/article/<%-article.url%>"><i class="ti-notepad"></i>January 12,2019</a></li>
+                  <li><a href="/article/<%-article.url%>"><i class="ti-themify-favicon"></i>2 Comments</a></li>
                 </ul>
               </div>
               <div class="details mt-20">
-                <a href="blog-single.html">
+                <a href="/article/<%-article.url%>">
                   <h3>
                     <%-article.title %>
                   </h3>
@@ -170,7 +169,7 @@
                 <p>
                   <%-article.contenu %>
                 </p>
-                <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+                <a class="button" href="/article/<%-article.url%>">Read More <i class="ti-arrow-right"></i></a>
               </div>
               <% }) %>
             </div>
@@ -373,10 +372,6 @@
                   <div style="position: absolute; left: -5000px;">
                     <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
                   </div>
-
-                  <!-- <div class="col-lg-4 col-md-4">
-                        <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-                      </div>  -->
                 </div>
                 <div class="info"></div>
               </form>

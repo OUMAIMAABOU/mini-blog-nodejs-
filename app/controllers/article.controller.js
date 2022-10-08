@@ -67,20 +67,24 @@ exports.findOneArticle = (req, res) => {
 };
 
 exports.showOneArticle = (req, res) => {
-  const id = req.params.id;
-  article.findByPk(id)
-    .then(data => {
+  const url = req.params.url;
+  article.findAll({
+    limit: 1,
+    where: {
+        url: url
+    }
+    }).then(data => {
         if (data) {
-          res.render('blog_details',{'data':data})
+          res.render('blog_details',{'articles':data})
         } else {
             res.status(404).send({
-                message: `Cannot find article with id=${id}.`
+                message: `Cannot find article with id=${url}.`
             });
         }
     })
     .catch(err => {
         res.status(500).send({
-            message: "Error retrieving article with id=" + id
+            message: "Error retrieving article with id=" + url
     });
   });
 };

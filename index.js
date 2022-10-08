@@ -23,11 +23,7 @@ app.set('view engine','ejs')
 
 
 
-// ________________________ homePage ______________________
 
-app.get("/blog", (req, res) => {
-  res.render('blog_details');
-});
 // ________________________ dashboard ______________________
 // Dashboard
 app.get('/dash', (req, res) => {

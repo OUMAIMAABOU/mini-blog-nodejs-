@@ -6,8 +6,10 @@ module.exports = app => {
   const article = require('../controllers/article.controller')
 
 
+
+  
   app.get("/", article.getAllArticles);
-  app.get("/article/:id", article.showOneArticle);
+  app.get("/article/:url", article.showOneArticle);
 
   router.post("/createComment", commentaire.create);
   router.post("/createAvis", avis.create);
