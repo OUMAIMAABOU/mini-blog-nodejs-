@@ -34,9 +34,8 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% articles.forEach(article => { %>
                     <tr class="rounded">
-                        <% articles.forEach(article => { %>
-                    <tr>
                         <td scope="col"> <%-article.id %>  </td>
                         <td scope="col"> <%-article.title %></td>
                         <td scope="col"> <%-article.url %>  </td>
@@ -77,6 +76,13 @@
                         <label for="amount" class="form-label">contenu</label>
                         <input type="text"  class="form-control"  name="contenu" >
                     </div>
+                    <select id="recipient_" class="form-control form-control-lg mb-3" name="recipient">
+                        
+                        <option value="4">best categorie</option>
+                        <option value="4">awesome categorie</option>
+                        <option value="4">others categorie</option>
+                        
+                    </select>
 
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 </form>

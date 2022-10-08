@@ -5,8 +5,11 @@ module.exports = app => {
   const avis = require('../controllers/avis.controller')
   const article = require('../controllers/article.controller')
 
-  
-  router.post("/", commentaire.create);
+
+  app.get("/", article.getAllArticles);
+  app.get("/article/:id", article.showOneArticle);
+
+  router.post("/createComment", commentaire.create);
   router.post("/createAvis", avis.create);
   router.post("/createArticle", article.create);
   router.post("/createCategorie", categorie.create);

@@ -7,8 +7,8 @@ app.use(express.static('public'))
 app.use(express.static(__dirname + '/views'));
 
 const db = require("./app/models");
-const store = require("store2");
-store('Profile', {linked_page: ''});
+
+
 db.sequelize.sync()
   .then(() => {
     console.log("create db.");
@@ -25,9 +25,6 @@ app.set('view engine','ejs')
 
 // ________________________ homePage ______________________
 
-app.get("/", (req, res) => {
-  res.render('homePage');
-});
 app.get("/blog", (req, res) => {
   res.render('blog_details');
 });
