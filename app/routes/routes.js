@@ -15,17 +15,17 @@ module.exports = app => {
   app.get("/comments", commentaire.findAllcommentaire);
   router.get("/showAllAvis", avis.findAll);
   router.get("/showAllArticles", article.findAll);
-  router.get("/getAllCategorie", categorie.findAll);
+  app.get("/categories", categorie.findAllCategories);
 
   app.get("/comments/edite/:id", commentaire.findOnecommentaire);
   router.get("/gitOneAvis/:id", avis.findOne);
   router.get("/gitOneArticle/:id", article.findOne);
-  app.get("/getoneCategorie/:id", categorie.findOne);
+  app.get("/getoneCategorie/:id", categorie.findOnecategorie);
 
   app.post("/comments/update", commentaire.updatecommentaire);
   router.put("/updateAvis/:id", avis.update)
   router.put("/updateArticle/:id", article.update)
-  router.put("/UpdateCategorie/:id", categorie.update);
+  app.post("/updateCategorie", categorie.updatecategorie);
   
   app.get("/comments/delete/:id", commentaire.delete);
   router.delete("/deleteAvis/:id" , avis.delete)
@@ -35,5 +35,5 @@ module.exports = app => {
   app.use('/comments', router);
   app.use('/article', router);
   app.use('/avis', router);
-  app.use('/categorie', router)
+  app.use('/categories', router)
 };

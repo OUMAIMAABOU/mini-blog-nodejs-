@@ -23,8 +23,6 @@ app.set('views','./views')
 app.set('view engine','ejs')
 
 
-
-
 // ________________________ homePage ______________________
 
 app.get("/", (req, res) => {
@@ -49,22 +47,17 @@ app.get('/articles/artu', async(req, res) => {
   res.render('articles')
 })
 // Categories
-app.get('/categories', async(req, res) => {
-  res.render('categories')
-})
+
 // 
 //------------ view table categorie dashboard 
-app.get('/table_categorie', async(req, res) => {
-  let categorie = await findAll()
-  res.render('table_categorie', {categorie})
-})
+
 //------------ view table categorie dashboard 
 
 //---------- view categorie page home
-app.get('/', async(req, res) => {
-  let categorie = await findAll()
-  res.render('homePage', {categorie})
-})
+// app.get('/', async(req, res) => {
+//   let categorie = await findAll()
+//   res.render('homePage', {categorie})
+// })
 //---------- view categorie page home
 
 require("./app/routes/routes")(app);
