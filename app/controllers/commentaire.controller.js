@@ -24,7 +24,7 @@ exports.findAllcommentaire = (req, res  ) => {
     ['id', 'DESC']
 ],})
   .then(data => {
-      res.render('avisComme',{'commantaire':data})
+      res.render('avisComme',{'commantaire':data,'is_linked':'comments'})
     })
 .catch(err => {
       console.log(err )  

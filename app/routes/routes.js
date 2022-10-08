@@ -8,13 +8,13 @@ module.exports = app => {
   
   router.post("/", commentaire.create);
   router.post("/createAvis", avis.create);
-  router.post("/createArticle", article.create);
+  router.post("/", article.create);
   router.post("/createCategorie", categorie.create);
 
-  app.get("/comments", commentaire.findAllcommentaire);
+  app.get("/comments",commentaire.findAllcommentaire);
   router.get("/showAllAvis", avis.findAll);
-  router.get("/showAllArticles", article.findAll);
-  router.get("/getAllCategorie", categorie.findAll);
+  app.get("/articles", article.findAllArticles);
+  app.get("/categories", categorie.findAllCategories);
 
   app.get("/comments/edite/:id", commentaire.findOnecommentaire);
   router.get("/gitOneAvis/:id", avis.findOne);
@@ -32,8 +32,8 @@ module.exports = app => {
   router.delete("/deleteCategorie/:id", categorie.delete);
 
   app.use('/comments', router);
-  app.use('/article', router);
+  app.use('/articles', router);
   app.use('/avis', router);
-  app.use('/categorie', router)
+  app.use('/categories', router)
 
 };

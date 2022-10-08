@@ -7,8 +7,8 @@ app.use(express.static('public'))
 app.use(express.static(__dirname + '/views'));
 
 const db = require("./app/models");
-
-
+const store = require("store2");
+store('Profile', {linked_page: ''});
 db.sequelize.sync()
   .then(() => {
     console.log("create db.");
@@ -33,23 +33,17 @@ app.get("/blog", (req, res) => {
 });
 // ________________________ dashboard ______________________
 // Dashboard
-app.get("/", (req, res) => {
-  res.render('dashboard');
-});
 app.get('/dash', (req, res) => {
-  res.render('dashboard')
+  res.render('dashboard',{'is_linked':'dashboard'})
 })
+// Settings
+
 app.get('/settings', (req, res) => {
-  res.render('settings')
+  res.render('settings',{'is_linked':'settings'})
 })
 // Articles
-app.get('/articles/artu', async(req, res) => {
-  res.render('articles')
-})
+
 // Categories
-app.get('/categories', async(req, res) => {
-  res.render('categories')
-})
 require("./app/routes/routes")(app);
 const port = process.env.PORT || 8080
 console.log('The value of PORT is:', process.env.PORT ,port);

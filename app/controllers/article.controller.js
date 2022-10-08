@@ -3,36 +3,36 @@ const db = require('../models');
 const slug = require('slug')
 
 const Article = db.article;
+
 exports.create = (req, res) => {
-    const article = {
-      article_url: slug(req.body.title),
-      article_title: req.body.title,
-      article_contenu: req.body.contenu 
-      };
-      article.create(article)
-        .then(data => {
-          res.send(data);
-        })
-        .catch(err => {
-          res.status(500).send({
-            message:
-              err.message || "Some error occurred while creating the Tutorial."
-          });
+  const article = {
+      title: req.body.title,
+      url: req.body.url,
+      contenu: req.body.contenu,
+    };
+        Article.create(article)
+      .then(
+        res.redirect('/articles')
+      )
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message 
         });
+      });
 };
 
-exports.findAll = (req, res) => {
-  Article.findAll()
+exports.findAllArticles = (req, res  ) => {
+  article.findAll({ order: [
+    ['id', 'DESC']
+],})
   .then(data => {
-    res.send(data);
-  })
-  .catch(err => {
-    res.status(500).send({
-      message:
-        err.message
-    });
-  });
-};
+      res.render('articles',{'articles':data,'is_linked':'articles'})
+    })
+.catch(err => {
+      console.log(err )  
+});
+}
 
 exports.findOne = (req, res) => {
   
