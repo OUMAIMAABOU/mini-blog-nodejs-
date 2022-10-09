@@ -27,7 +27,8 @@
     "nodemon": "^2.0.20",
     "sequelize": "^6.23.2",
     "slug": "^8.2.2",
-    "store2": "^2.14.2"
+    "store2": "^2.14.2",
+    "watch": "^1.0.2"
   },
   "devDependencies": {
     "@types/slug": "^5.0.3"
