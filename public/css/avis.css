@@ -81,7 +81,7 @@ input#rate-5:checked ~ label{
   content: "I just love it ";
 }
 .avis form{
-  display: none;
+  /* display: none; */
 }
 input:checked ~ form{
   display: block;

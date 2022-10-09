@@ -7,7 +7,7 @@ module.exports = app => {
 
   
   router.post("/", commentaire.create);
-  router.post("/createAvis", avis.create);
+  app.post("/", avis.create);
   router.post("/createArticle", article.create);
   router.post("/createCategorie", categorie.create);
 

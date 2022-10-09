@@ -14,7 +14,7 @@ exports.create = (req, res) => {
 
     // save avis in data base
     Avis.create(avis)
-        .then(data => { res.send(data) })
+        .then(res.redirect('/') )
         .catch(err => {
             res.status(500).send({
                 message:
