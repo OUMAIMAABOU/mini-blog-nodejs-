@@ -26,11 +26,15 @@
                                 
                                 <td scope="col"> <%-categorie.name %>  </td>
                                 
+                                
                                 <td><a href="/getoneCategorie/<%-categorie.id %>"><input type="button" class="text-info border border-3 border-info bg-white px-4 py-2 rounded-3 text-blod" value="update"></a></td>
                                 <td><a href="/deleteCategorie/<%-categorie.id %>"><input type="button"  class="text-danger border border-3 border-danger bg-white px-4 py-2 rounded-3 text-blod" value="delete"></a></td>
                                
-                         </tr>  
+                         </tr> 
+                         
+
                                <% }) %>
+                               
                     
                 </tbody>
             </table>
@@ -54,15 +58,6 @@
                         <label for="amount" class="form-label">name</label>
                         <input type="text"  class="form-control"  name="name" >
                     </div>
-                    <!-- <div class="mb-3">
-                        <label for="amount" class="form-label">email</label>
-                        <input type="text"  class="form-control"  name="email" >
-                    </div> -->
-                    <!-- <div class="mb-3">
-                        <label for="amount" class="form-label">commentaire</label>
-                        <input type="text"  class="form-control"  name="commentaire" >
-                    </div> -->
-
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 </form>
             </div>

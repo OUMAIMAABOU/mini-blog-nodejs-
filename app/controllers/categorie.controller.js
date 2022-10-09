@@ -13,6 +13,7 @@ const Op = db.Sequelize.Op;
               Categorie.create(categories)
             .then(
               res.redirect('/categories')
+              
             )
             .catch(err => {
               res.status(500).send({
@@ -78,28 +79,6 @@ const Op = db.Sequelize.Op;
         console.log(id)
     }
 
-    // exports.update = (req, res) => {
-    //     const id =req.body.id;
-    
-    //     categorie.update(req.body, {
-    //     where: { id: id }
-    //     })
-    //     .then(num => {
-    //         if (num == 1) {
-    //             res.redirect('/table_categorie');
-    //         } else {
-    //         res.send({
-    //             message: `Cannot update categorie with id=${id}. Maybe categorie was not found or req.body is empty!`
-    //         });
-    //         }
-    //     })
-    //     .catch(err => {
-    //         res.status(500).send({
-    //         message: "Error updating categorie with id=" + id
-    //         });
-    //     });
-    // };
-
     exports.updatecategorie = (req, res) => {
         const categories = {
           
@@ -130,6 +109,7 @@ const Op = db.Sequelize.Op;
           .then(num => {
             if (num == 1) {
               res.redirect('/categories');
+              
             } else {
               res.send({
                 message: `not found!`
