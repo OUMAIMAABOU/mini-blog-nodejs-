@@ -14,18 +14,6 @@
   <link rel="stylesheet" href="vendors/linericon/style.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" href="css/avis.css">
-
-
-
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -93,66 +81,18 @@
     <section>
       <div class="container">
         <div class="owl-carousel owl-theme blog-slider">
+          <% articles.forEach(article => { %>
           <div class="card blog__slide text-center">
             <div class="blog__slide__img">
               <img class="card-img rounded-0" src="img/blog/blog-slider/blog-slide1.png" alt="">
             </div>
             <div class="blog__slide__content">
-              <a class="blog__slide__label" href="#">Fashion</a>
-              <h3><a href="#">New york fashion week's continued the evolution</a></h3>
+              <a class="blog__slide__label" href="/article/<%-article.url%>">Fashion</a>
+              <h3><a href="/article/<%-article.url%>"><%-article.title%></a></h3>
               <p>2 days ago</p>
             </div>
           </div>
-          <div class="card blog__slide text-center">
-            <div class="blog__slide__img">
-              <img class="card-img rounded-0" src="img/blog/blog-slider/blog-slide2.png" alt="">
-            </div>
-            <div class="blog__slide__content">
-              <a class="blog__slide__label" href="#">Fashion</a>
-              <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-              <p>2 days ago</p>
-            </div>
-          </div>
-          <div class="card blog__slide text-center">
-            <div class="blog__slide__img">
-              <img class="card-img rounded-0" src="img/blog/blog-slider/blog-slide3.png" alt="">
-            </div>
-            <div class="blog__slide__content">
-              <a class="blog__slide__label" href="#">Fashion</a>
-              <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-              <p>2 days ago</p>
-            </div>
-          </div>
-          <div class="card blog__slide text-center">
-            <div class="blog__slide__img">
-              <img class="card-img rounded-0" src="img/blog/blog-slider/blog-slide1.png" alt="">
-            </div>
-            <div class="blog__slide__content">
-              <a class="blog__slide__label" href="#">Fashion</a>
-              <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-              <p>2 days ago</p>
-            </div>
-          </div>
-          <div class="card blog__slide text-center">
-            <div class="blog__slide__img">
-              <img class="card-img rounded-0" src="img/blog/blog-slider/blog-slide2.png" alt="">
-            </div>
-            <div class="blog__slide__content">
-              <a class="blog__slide__label" href="#">Fashion</a>
-              <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-              <p>2 days ago</p>
-            </div>
-          </div>
-          <div class="card blog__slide text-center">
-            <div class="blog__slide__img">
-              <img class="card-img rounded-0" src="img/blog/blog-slider/blog-slide3.png" alt="">
-            </div>
-            <div class="blog__slide__content">
-              <a class="blog__slide__label" href="#">Fashion</a>
-              <h3><a href="#">New york fashion week's continued the evolution</a></h3>
-              <p>2 days ago</p>
-            </div>
-          </div>
+          <% }) %>
         </div>
       </div>
     </section>
@@ -164,131 +104,28 @@
         <div class="row">
           <div class="col-lg-8">
             <div class="single-recent-blog-post">
+              <% articles.forEach(article => { %>
               <div class="thumb">
                 <img class="img-fluid" src="img/blog/blog1.png" alt="">
                 <ul class="thumb-info">
-                  <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                  <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
-                  <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
+                  <li><a href="/article/<%-article.url%>"><i class="ti-user"></i>Admin</a></li>
+                  <li><a href="/article/<%-article.url%>"><i class="ti-notepad"></i>January 12,2019</a></li>
+                  <li><a href="/article/<%-article.url%>"><i class="ti-themify-favicon"></i>2 Comments</a></li>
                 </ul>
               </div>
               <div class="details mt-20">
-                <a href="blog-single.html">
-                  <h3>Woman claims husband wants to name baby girl
-                    after his ex-lover sparking.</h3>
+                <a href="/article/<%-article.url%>">
+                  <h3>
+                    <%-article.title %>
+                  </h3>
                 </a>
-                <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life style</a>, <a
-                    href="#">technology</a>, <a href="#">fashion</a></p>
-                <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser cattle were
-                  fruitful lights. Given let have, lesser their made him above gathered dominion sixth. Creeping deep
-                  said can't called second. Air created seed heaven sixth created living</p>
-                <div class="d-flex justify-content-between">
-                  <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                  <!-- <button class="button" id="btan">Avis</button> -->
-                </div>
-                <!-- <div class="avis dropdown-menu">
-                  <div class="star-widget">
-                    
-                      <input type="radio" name="avie" id="rate-5" class="d-none" value="5 stars">
-                      <label for="rate-5" class="fas fa-star"></label>
-                      <input type="radio" name="avie" id="rate-4" class="d-none" value="4 stars">
-                      <label for="rate-4" class="fas fa-star"></label>
-                      <input type="radio" name="avie" id="rate-3" class="d-none" value="3 stars">
-                      <label for="rate-3" class="fas fa-star"></label>
-                      <input type="radio" name="avie" id="rate-2" class="d-none" value="2 stars">
-                      <label for="rate-2" class="fas fa-star"></label>
-                      <input type="radio" name="avie" id="rate-1" class="d-none" value="1 stars">
-                      <label for="rate-1" class="fas fa-star"></label>
-
-
-                      <div class="textarea">
-                        <textarea cols="30" placeholder="Describe your experience.."></textarea>
-                      </div>
-                      <input type="text" name="name" id="" placeholder="Enter Your Name" class="comme">
-                      <input type="text" name="email" id="" placeholder="Enter Your email" class="comme">
-
-                      <header></header>
-                      <div class="btn">
-                        <button type="submit">Post</button>
-                      </div>
-                    </form>
-                  </div>
-                </div> -->
-                <!-- </div>       -->
-                <!-- fin dropdown -->
-                <!-- </div> -->
+                <p>
+                  <%-article.contenu %>
+                </p>
+                <a class="button my-3" href="/article/<%-article.url%>">Read More <i class="ti-arrow-right"></i></a>
               </div>
+              <% }) %>
             </div>
-
-            <div class="single-recent-blog-post">
-              <div class="thumb">
-                <img class="img-fluid" src="img/blog/blog2.png" alt="">
-                <ul class="thumb-info">
-                  <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                  <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
-                  <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                </ul>
-              </div>
-              <div class="details mt-20">
-                <a href="blog-single.html">
-                  <h3>Woman claims husband wants to name baby girl
-                    after his ex-lover sparking.</h3>
-                </a>
-                <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life style</a>, <a
-                    href="#">technology</a>, <a href="#">fashion</a></p>
-                <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser cattle were
-                  fruitful lights. Given let have, lesser their made him above gathered dominion sixth. Creeping deep
-                  said can't called second. Air created seed heaven sixth created living</p>
-                <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-
-            <div class="single-recent-blog-post">
-              <div class="thumb">
-                <img class="img-fluid" src="img/blog/blog3.png" alt="">
-                <ul class="thumb-info">
-                  <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                  <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
-                  <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                </ul>
-              </div>
-              <div class="details mt-20">
-                <a href="blog-single.html">
-                  <h3>Tourist deaths in Costa Rica jeopardize safe dest
-                    ination reputation all time. </h3>
-                </a>
-                <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life style</a>, <a
-                    href="#">technology</a>, <a href="#">fashion</a></p>
-                <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser cattle were
-                  fruitful lights. Given let have, lesser their made him above gathered dominion sixth. Creeping deep
-                  said can't called second. Air created seed heaven sixth created living</p>
-                <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-
-            <div class="single-recent-blog-post">
-              <div class="thumb">
-                <img class="img-fluid" src="img/blog/blog4.png" alt="">
-                <ul class="thumb-info">
-                  <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                  <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
-                  <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                </ul>
-              </div>
-              <div class="details mt-20">
-                <a href="blog-single.html">
-                  <h3>Tourist deaths in Costa Rica jeopardize safe dest
-                    ination reputation all time. </h3>
-                </a>
-                <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life style</a>, <a
-                    href="#">technology</a>, <a href="#">fashion</a></p>
-                <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser cattle were
-                  fruitful lights. Given let have, lesser their made him above gathered dominion sixth. Creeping deep
-                  said can't called second. Air created seed heaven sixth created living</p>
-                <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-
 
 
             <div class="row">
@@ -490,10 +327,6 @@
                   <div style="position: absolute; left: -5000px;">
                     <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
                   </div>
-
-                  <!-- <div class="col-lg-4 col-md-4">
-                        <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-                      </div>  -->
                 </div>
                 <div class="info"></div>
               </form>

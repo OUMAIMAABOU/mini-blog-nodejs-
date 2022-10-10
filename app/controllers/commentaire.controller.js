@@ -1,6 +1,7 @@
 const { commentaire, article } = require("../models");
 const db = require("../models");
 const Commentaire = db.commentaire;
+
 exports.create = (req, res) => {
     const commentaires = {
         email: req.body.email,
@@ -25,7 +26,7 @@ exports.findAllcommentaire = (req, res  ) => {
     ['id', 'DESC']
 ],})
   .then(data => {
-      res.render('avisComme',{'commantaire':data})
+      res.render('avisComme',{'commantaire':data,'is_linked':'comments'})
     })
 .catch(err => {
       console.log(err )  
@@ -96,4 +97,5 @@ exports.delete = (req, res) => {
       });
     });
 };
-// Commentaire.belongsTo(db.article); 
+
+Commentaire.belongsTo(db.article); 

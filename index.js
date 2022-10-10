@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/views'));
 const db = require("./app/models");
 
 
-db.sequelize.sync()
+db.sequelize.sync({alter: true})
   .then(() => {
     console.log("create db.");
   })
@@ -23,33 +23,20 @@ app.set('view engine','ejs')
 
 
 
-// ________________________ homePage ______________________
 
-app.get("/", (req, res) => {
-  res.render('homePage');
-});
-app.get("/blog", (req, res) => {
-  res.render('blog_details');
-});
 // ________________________ dashboard ______________________
 // Dashboard
-app.get("/", (req, res) => {
-  res.render('dashboard');
-});
 app.get('/dash', (req, res) => {
-  res.render('dashboard')
+  res.render('dashboard',{'is_linked':'dashboard'})
 })
+// Settings
+
 app.get('/settings', (req, res) => {
-  res.render('settings')
+  res.render('settings',{'is_linked':'settings'})
 })
 // Articles
-app.get('/articles/artu', async(req, res) => {
-  res.render('articles')
-})
+
 // Categories
-app.get('/categories', async(req, res) => {
-  res.render('categories')
-})
 require("./app/routes/routes")(app);
 const port = process.env.PORT || 8080
 console.log('The value of PORT is:', process.env.PORT ,port);

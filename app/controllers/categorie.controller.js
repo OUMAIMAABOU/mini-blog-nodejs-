@@ -20,21 +20,17 @@ const Op = db.Sequelize.Op;
         });
     };
 
-    exports.findAll = (req, res) => {
-        const name = req.query.name;
-        var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
-    
-        categorie.findAll({ where: condition })
+    exports.findAllCategories = (req, res  ) => {
+        categorie.findAll({ order: [
+          ['id', 'DESC']
+      ],})
         .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-            message:
-                err.message || "Some error occurred while retrieving tutorials."
-            });
-        });
-    };
+            res.render('categories',{'categories':data,'is_linked':'categories'})
+          })
+      .catch(err => {
+            console.log(err )  
+      });
+    }
 
     exports.findOne = (req, res) => {
         const id = req.params.id;
