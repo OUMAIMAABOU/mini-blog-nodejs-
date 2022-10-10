@@ -5,40 +5,54 @@ const Op = db.Sequelize.Op;
 
     exports.create = (req, res) => {
         const categories = {
+           
             name: req.body.name,
-            update: req.body.update,
-            delete: req.body.delete 
-        };
-        Categorie.create(categories).then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-            message:
-                err.message || "Some error occurred while creating the Tutorial."
+            
+         
+          };
+              Categorie.create(categories)
+            .then(
+              res.redirect('/categories')
+            )
+            .catch(err => {
+              res.status(500).send({
+                message:
+                  err.message 
+              });
             });
-        });
     };
 
-    exports.findAllCategories = (req, res  ) => {
+    exports.findAllCategoriesdash = (req, res  ) => {
         categorie.findAll({ order: [
           ['id', 'DESC']
       ],})
         .then(data => {
-            res.render('categories',{'categories':data,'is_linked':'categories'})
+            res.render('categories',{'categories':data})
           })
       .catch(err => {
             console.log(err )  
       });
-    }
+      }
 
-    exports.findOne = (req, res) => {
+      exports.findAllCategorieshome = (req, res  ) => {
+        categorie.findAll({ order: [
+          ['id', 'DESC']
+      ],})
+        .then(data => {
+            res.render('homePage',{'categories':data})
+          })
+      .catch(err => {
+            console.log(err )  
+      });
+      }
+
+    exports.findOnecategorie = (req, res) => {
         const id = req.params.id;
     
         categorie.findByPk(id)
         .then(data => {
             if (data) {
-            res.send(data);
+                res.render('categorie_update', {'categorie': data});
             } else {
             res.status(404).send({
                 message: `Cannot find Tutorial with id=${id}.`
@@ -52,50 +66,79 @@ const Op = db.Sequelize.Op;
         });
     };
 
-    exports.update = (req, res) => {
-        const id = req.params.id;
-    
-        categorie.update(req.body, {
-        where: { id: id }
-        })
-        .then(num => {
-            if (num == 1) {
-            res.send({
-                message: "categorie was updated successfully."
-            });
-            } else {
-            res.send({
-                message: `Cannot update categorie with id=${id}. Maybe categorie was not found or req.body is empty!`
-            });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-            message: "Error updating categorie with id=" + id
-            });
-        });
-    };
 
-    exports.delete = (req, res) => {
+   
+
+
+
+
+    exports.test_id = (req,res) =>{
         const id = req.params.id;
+        res.redirct("/")
+        console.log(id)
+    }
+
+    // exports.update = (req, res) => {
+    //     const id =req.body.id;
     
-        categorie.destroy({
-        where: { id: id }
+    //     categorie.update(req.body, {
+    //     where: { id: id }
+    //     })
+    //     .then(num => {
+    //         if (num == 1) {
+    //             res.redirect('/table_categorie');
+    //         } else {
+    //         res.send({
+    //             message: `Cannot update categorie with id=${id}. Maybe categorie was not found or req.body is empty!`
+    //         });
+    //         }
+    //     })
+    //     .catch(err => {
+    //         res.status(500).send({
+    //         message: "Error updating categorie with id=" + id
+    //         });
+    //     });
+    // };
+
+    exports.updatecategorie = (req, res) => {
+        const categories = {
+          
+          name: req.body.name,
+         
+        };
+      
+        categorie.update(categories, {
+          where: { id : req.body.id }
         })
-        .then(num => {
+          .then(num => {
             if (num == 1) {
-            res.send({
-                message: "Categorie was deleted successfully!"
-            });
-            } else {
-            res.send({
-                message: `Cannot delete Categorie with id=${id}. Maybe Categorie was not found!`
-            });
+              res.redirect('/categories')
             }
-        })
-        .catch(err => {
+          })
+          .catch(err => {
             res.status(500).send({
-            message: "Could not delete Categorie with id=" + id
+              message: "Error updating " + id
             });
-        });
-    };
+          });
+      };
+
+      
+    exports.delete = (req, res) => {
+        categorie.destroy({
+          where: { id: req.params.id }
+        })
+          .then(num => {
+            if (num == 1) {
+              res.redirect('/categories');
+            } else {
+              res.send({
+                message: `not found!`
+              });
+            }
+          })
+          .catch(err => {
+            res.status(500).send({
+              message: " id=" + id +"not existe"
+            });
+          });
+      };
