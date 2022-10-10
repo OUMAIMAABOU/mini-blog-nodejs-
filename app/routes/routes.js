@@ -12,6 +12,7 @@ module.exports = app => {
   router.post("/createCategorie", categorie.create);
 
   app.get("/comments", commentaire.findAllcommentaire);
+  // app.get("/blog", commentaire.findAllcomments);
   // router.get("/showAllAvis", avis.findAll);
   router.get("/showAllArticles", article.findAll);
   router.get("/getAllCategorie", categorie.findAll);
