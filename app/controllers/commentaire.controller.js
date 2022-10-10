@@ -21,14 +21,12 @@ exports.create = (req, res) => {
       });
     });
 };
-exports.findAllcommentaire = (req, res) => {
-  commentaire.findAll({
-    order: [
-      ['id', 'DESC']
-    ],
-  })
-    .then(data => {
-      res.render('avisComme', { 'commantaire': data }) 
+exports.findAllcommentaire = (req, res  ) => {
+  commentaire.findAll({ order: [
+    ['id', 'DESC']
+],})
+  .then(data => {
+      res.render('avisComme',{'commantaire':data,'is_linked':'comments'})
     })
     .catch(err => {
       console.log(err)
@@ -60,7 +58,7 @@ exports.updatecommentaire = (req, res) => {
     nom: req.body.nom,
     commentaire: req.body.commentaire,
     avis: req.body.avis,
-    articleId: "1"
+    // articleId: "1"
   };
 
   Commentaire.update(commentaires, {

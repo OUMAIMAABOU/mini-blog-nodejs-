@@ -95,7 +95,7 @@ html, body{
 }
 .link__active{
     background-color: var(--main-border-blanchedalmond);
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 14px 14px 0;
 }
 .side__bar.active .link__active{
     background-color: var(--main-border-blanchedalmond);
@@ -255,6 +255,9 @@ html, body{
     margin: 0px;
 }
 
+.select_style{
+    height: 23px;
+}
 
 @media only screen and (max-width: 920px) {
     .side__bar{

@@ -4,14 +4,7 @@ module.exports = (sequelize,Sequelize) => {
             type:Sequelize.STRING,
             allowNull: false
             },
-            update: {
-            type:Sequelize.STRING,
-            allowNull: false
-            },
-            delete: {
-            type:Sequelize.TEXT,
-            allowNull: false
-            }
+            
         });
     return categorie;
 };
