@@ -2111,7 +2111,7 @@ a {
     font-size: 13px;
     color: #999999;
     border: 1px solid transparent;
-    text-transform: uppercase
+    text-transform: capitalize
 }
 
 .comment-form .form-control:focus {

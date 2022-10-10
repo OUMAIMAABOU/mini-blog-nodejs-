@@ -3,77 +3,105 @@ const db = require('../models');
 const slug = require('slug')
 
 const Article = db.article;
+
+
 exports.create = (req, res) => {
-    const article = {
-      article_url: slug(req.body.title),
-      article_title: req.body.title,
-      article_contenu: req.body.contenu 
-      };
-      article.create(article)
-        .then(data => {
-          res.send(data);
-        })
-        .catch(err => {
-          res.status(500).send({
-            message:
-              err.message || "Some error occurred while creating the Tutorial."
-          });
-        });
-};
-
-exports.findAll = (req, res) => {
-  Article.findAll()
-  .then(data => {
-    res.send(data);
-  })
-  .catch(err => {
-    res.status(500).send({
-      message:
-        err.message
+  const article = {
+      title: req.body.title,
+      url:slug(req.body.title),
+      contenu: req.body.contenu,
+    };
+    Article.create(article)
+    .then(
+      res.redirect('/articles')
+    )
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message 
+      });
     });
-  });
 };
 
+exports.findAllArticles = (req, res  ) => {
+  article.findAll({ order: [
+    ['id', 'DESC']
+  ],})
+    .then(data => {
+        res.render('articles',{'articles':data,'is_linked':'articles'})
+      })
+  .catch(err => {
+        console.log(err )  
+  });
+  }
 
-exports.findOne = (req, res) => {
-  const slug = req.params.slug;
-  Article.findOne({where: {article_url: slug}
-  }).then(data => {
+exports.getAllArticles = (req, res  ) => {
+  article.findAll({ order: [
+    ['id', 'DESC']
+  ],})
+    .then(data => {
+        res.render('homePage',{'articles':data})
+      })
+  .catch(err => {
+        console.log(err )  
+  });
+}
+
+exports.findOneArticle = (req, res) => {
+  const id = req.params.id;
+  article.findByPk(id)
+    .then(data => {
         if (data) {
-          res.render('blog_details',{'data':data,})
+          res.render('updateArticle',{'data':data})
         } else {
             res.status(404).send({
-                message: `Cannot find Article `
+                message: `Cannot find avis with id=${id}.`
             });
         }
     })
     .catch(err => {
         res.status(500).send({
-            message: "Error retrieving Article"
-        });
+            message: "Error retrieving avis with id=" + id
     });
+  });
 };
 
-exports.update = (req, res) => {
-  const id = req.params.id;
+exports.showOneArticle = (req, res) => {
+  const url = req.params.url;
+  article.findOne({
+    limit: 1,
+    where: {
+        url: url
+    }
+    }).then(data => {
+        if (data) {
+          res.render('blog_details',{'articles':data})
+        } else {
+            res.status(404).send({
+                message: `Cannot find article with id=${url}.`
+            });
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Error retrieving article with id=" + url
+    });
+  });
+};
+
+exports.UpdateArticle = (req, res) => {
   const article = {
-    article_url: slug(req.body.title),
-    article_title: req.body.title,
-    article_contenu: req.body.contenu 
+    title: req.body.title,
+    url: req.body.url,
+    contenu: req.body.contenu,
   };
 
   Article.update(article, {
-    where: { id: id }
+    where: { id : req.body.id }
   })
     .then(num => {
       if (num == 1) {
-        res.send({
-          message: "updated successfully."
-        });
-      } else {
-        res.send({
-          message: `cant update`
-        });
+        res.redirect('/articles')
       }
     })
     .catch(err => {
@@ -84,16 +112,12 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  const id = req.params.id;
-
   Article.destroy({
-    where: { id: id }
+    where: { id: req.params.id }
   })
     .then(num => {
       if (num == 1) {
-        res.send({
-          message: "successfully deleted!"
-        });
+        res.redirect('/articles');
       } else {
         res.send({
           message: `not found!`
@@ -102,7 +126,7 @@ exports.delete = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        message: " id=" + id + "not existe"
+        message: " id=" + id +"not existe"
       });
     });
 };

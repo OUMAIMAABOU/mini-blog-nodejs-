@@ -1,3 +1,5 @@
+const { Model } = require("sequelize");
+
 module.exports = (sequelize, Sequelize) => {
   const article = sequelize.define("articles", {
         id: {
@@ -6,16 +8,22 @@ module.exports = (sequelize, Sequelize) => {
           autoIncrement: true
   
         },
-        article_url: {
+        url: {
           type:Sequelize.STRING,
         },
-        article_title: {
+        title: {
           type:Sequelize.STRING,
         },
-        article_contenu: {
+        contenu: {
           type:Sequelize.STRING,
         }
   });
+
+  // article.associate= models=>{
+  //   article.hasMany(models.commentaire, {
+  //     onDelete : "cascade"
+  //   })
+  // }
   return article;
 };
 
