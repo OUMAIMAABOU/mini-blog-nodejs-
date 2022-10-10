@@ -1,10 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
-    const commentaire = sequelize.define("commentaire", {
+     const commentaire = sequelize.define("commentaires", {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
-   
           },
           email: {
             type:Sequelize.STRING,
@@ -17,13 +16,25 @@ module.exports = (sequelize, Sequelize) => {
          commentaire: {
            type:Sequelize.TEXT,
            allowNull: false
-         }
+         } , 
+         avis: {
+          type:Sequelize.TEXT,
+          allowNull: false
+        } ,        
     });
-  
+
+  //  commentaire.associate= models=>{
+  //       commentaire.belongsTo(models.article, {
+  //         onDelete : "cascade"
+  //       })
+  //     }
+
     return commentaire;
   };
-  // / Articles.hasMany(commentaire);
-  // commentaire.belongsTo(Articles);
+  
+
+
+
 
 
    

@@ -17,11 +17,20 @@
   },
   "homepage": "https://github.com/OUMAIMAABOU/mini-blog-nodejs-#readme",
   "dependencies": {
+    "datatables.net": "^1.12.1",
+    "datatables.net-dt": "^1.12.1",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
-    "sequelize": "^6.23.2"
+    "sequelize": "^6.23.2",
+    "slug": "^8.2.2",
+    "store2": "^2.14.2",
+    "watch": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/slug": "^5.0.3"
   }
 }

@@ -5,34 +5,41 @@ module.exports = app => {
   const avis = require('../controllers/avis.controller')
   const article = require('../controllers/article.controller')
 
+
+
   
-  router.post("/", commentaire.create);
-  router.post("/createAvis", avis.create);
+  app.get("/", article.getAllArticles);
+  app.get("/article/:url", article.showOneArticle);
+
+  router.post("/createComment", commentaire.create);
+  // router.post("/createAvis", avis.create);
   router.post("/createArticle", article.create);
-  router.post("/createCategorie", categorie.create);
 
-  router.get("/", commentaire.findAll);
-  router.get("/showAllAvis", avis.findAll);
-  router.get("/showAllArticles", article.findAll);
-  router.get("/getAllCategorie", categorie.findAll);
+  app.get("/comments",commentaire.findAllcommentaire);
+  // router.get("/showAllAvis", avis.findAll);
+  app.get("/articles", article.findAllArticles);
 
-  router.get("/:id", commentaire.findOne);
-  router.get("/gitOneAvis/:id", avis.findOne);
-  router.get("/gitOneArticle/:id", article.findOne);
-  router.get("/getoneCategorie/:id", categorie.findOne);
+  app.get("/comments/edite/:id", commentaire.findOnecommentaire);
+  app.get("/articles/edite/:id", article.findOneArticle);
+  // router.get("/gitOneAvis/:id", avis.findOne);
 
-  router.put("/:id", commentaire.update);
-  router.put("/updateAvis/:id", avis.update)
-  router.put("/updateArticle/:id", article.update)
-  router.put("/UpdateCategorie/:id", categorie.update);
+  app.post("/comments/update", commentaire.updatecommentaire);
+  app.post("/articles/update", article.UpdateArticle);
+  // router.put("/updateAvis/:id", avis.update)
+  
+  app.get("/comments/delete/:id", commentaire.delete);
+  app.get("/articles/delete/:id", article.delete);
+  // router.delete("/deleteAvis/:id" , avis.delete)
+  app.get ("/deleteCategorie/:id", categorie.delete);
+  app.post("/updateCategorie", categorie.updatecategorie);
+  app.get("/getoneCategorie/:id", categorie.findOnecategorie);
+  app.get("/categories", categorie.findAllCategoriesdash);
+  app.get("/", categorie.findAllCategorieshome);
 
-  router.delete("/:id", commentaire.delete);
-  router.delete("/deleteAvis/:id" , avis.delete)
-  router.delete("/deleteArticle/:id" , article.delete)
-  router.delete("/deleteCategorie/:id", categorie.delete);
 
-  app.use('/commentaire', router);
-  app.use('/article', router);
-  app.use('/avis', router);
-  app.use('/categorie', router)
+  app.use('/comments', router);
+  app.use('/articles', router);
+  // app.use('/avis', router);
+  app.use('/categories', router)
+
 };
