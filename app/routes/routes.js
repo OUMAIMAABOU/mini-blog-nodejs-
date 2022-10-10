@@ -12,6 +12,8 @@ module.exports = app => {
   app.get("/article/:url", article.showOneArticle);
 
   router.post("/createComment", commentaire.create);
+  router.post("/blog", commentaire.create);
+
   // router.post("/createAvis", avis.create);
   router.post("/createArticle", article.create);
 

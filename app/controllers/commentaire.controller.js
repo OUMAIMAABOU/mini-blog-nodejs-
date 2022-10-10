@@ -8,7 +8,7 @@ exports.create = (req, res) => {
     nom: req.body.nom,
     commentaire: req.body.commentaire,
     avis: req.body.avis,
-    // articleId:"1"
+    articleId:req.body.articleId
   };
   Commentaire.create(commentaires)
     .then(
