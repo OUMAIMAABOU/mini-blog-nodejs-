@@ -40,7 +40,7 @@
                     aria-expanded="false">Category</a>
                     <ul class="dropdown-menu">
                       <% categories.forEach(categorie => { %>
-                      <li class="nav-item"><a class="nav-link" href="blog"><%-categorie.name %></a></li>
+                      <li class="nav-item"><a class="nav-link" href="/getoneArticleId/<%-categorie.id %>"><%-categorie.name %></a></li>
                       <% }) %>
                     </ul>
                   </li>

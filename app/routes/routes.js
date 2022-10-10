@@ -23,6 +23,7 @@ module.exports = app => {
   router.get("/gitOneAvis/:id", avis.findOne);
   router.get("/gitOneArticle/:id", article.findOne);
   app.get("/getoneCategorie/:id", categorie.findOnecategorie);
+  app.get("/getoneArticleId/:id", categorie.findOnearticle_id);
 
   app.post("/comments/update", commentaire.updatecommentaire);
   router.put("/updateAvis/:id", avis.update)

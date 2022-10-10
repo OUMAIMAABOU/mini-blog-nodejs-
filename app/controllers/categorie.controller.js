@@ -1,4 +1,6 @@
 const { categorie } = require("../models");
+const { art } = require("../models");
+
 const db = require("../models");
 const Categorie = db.categorie;
 const Op = db.Sequelize.Op;
@@ -67,12 +69,6 @@ const Op = db.Sequelize.Op;
         });
     };
 
-
-   
-
-
-
-
     exports.test_id = (req,res) =>{
         const id = req.params.id;
         res.redirct("/")
@@ -122,3 +118,52 @@ const Op = db.Sequelize.Op;
             });
           });
       };
+
+    //   exports.findOnearticle_id = (req, res) => {
+    //     const id = req.params.id;
+    
+    //     art.findByPk(id).then(data => {
+    //         if (data) {
+    //             res.render('categorie_id', {'art': data});
+               
+    //         } else {
+    //         res.status(404).send({
+    //             message: `Cannot find Tutorial with id=${id}.`
+    //         });
+    //         }
+    //     })
+    //     .catch(err => {
+    //         res.status(500).send({
+    //         message: "Error retrieving Tutorial with id=" + id
+    //         });
+    //     });
+    // };
+    exports.findOnearticle_id = (req, res  ) => {
+        const id = req.params.id
+        console.log(id)
+
+        art.findAll( {where: { id_art: id }}).then(data => {
+
+
+            res.render('categorie_id',{'art':data})
+          })
+    //   .catch(err => {
+    //         console.log(
+                
+    //          )  
+    //   });
+      }
+
+    //   exports.articleByCategory = async (req, res)=>{
+    //     const id = req.params.id;
+      
+    //       const data = await Article.findAll( { where: { CategoryId: id }
+      
+    //     })
+    //      res.render('home',{
+    //       articles: data,
+    //       categories:alldatacat
+      
+    //      });
+      
+    //   }

@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/views'));
 const db = require("./app/models");
 
 
-db.sequelize.sync()
+db.sequelize.sync({alter: true})
   .then(() => {
     console.log("create db.");
   })
@@ -41,6 +41,8 @@ app.get('/settings', (req, res) => {
 app.get('/articles/artu', async(req, res) => {
   res.render('articles')
 })
+
+
 // Categories
 
 // 
