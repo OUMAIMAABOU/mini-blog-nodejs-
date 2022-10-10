@@ -182,20 +182,13 @@
                 <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser cattle were
                   fruitful lights. Given let have, lesser their made him above gathered dominion sixth. Creeping deep
                   said can't called second. Air created seed heaven sixth created living</p>
-                <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
                 <div class="d-flex justify-content-between">
-                  <!--  start dropdown -->
-                  <!-- <div class="dropdown">
-                    <button class="border-0 bg-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <a class="button" href="#">Leave a comment <i class="ti-arrow-right"></i></a>
-                    </button> -->
-                  <div class="avis dropdown-menu">
-                    <div class="post">
-                      <div class="text">Thanks for rating us!</div>
-                      <div class="edit">EDIT</div>
-                    </div>
-                    <div class="star-widget">
-                      <form action="/" method="post">
+                  <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+                  <!-- <button class="button" id="btan">Avis</button> -->
+                </div>
+                <!-- <div class="avis dropdown-menu">
+                  <div class="star-widget">
+                    
                       <input type="radio" name="avie" id="rate-5" class="d-none" value="5 stars">
                       <label for="rate-5" class="fas fa-star"></label>
                       <input type="radio" name="avie" id="rate-4" class="d-none" value="4 stars">
@@ -206,24 +199,24 @@
                       <label for="rate-2" class="fas fa-star"></label>
                       <input type="radio" name="avie" id="rate-1" class="d-none" value="1 stars">
                       <label for="rate-1" class="fas fa-star"></label>
-                      
-                        
-                        <div class="textarea">
-                          <textarea cols="30" placeholder="Describe your experience.."></textarea>
-                        </div>
-                        <input type="text" name="name" id="" placeholder="Enter Your Name" class="comme">
-                        <input type="text" name="email" id="" placeholder="Enter Your email" class="comme">
 
-                        <header></header>
-                        <div class="btn">
-                          <button type="submit">Post</button>
-                        </div>
-                      </form>
-                    </div>
+
+                      <div class="textarea">
+                        <textarea cols="30" placeholder="Describe your experience.."></textarea>
+                      </div>
+                      <input type="text" name="name" id="" placeholder="Enter Your Name" class="comme">
+                      <input type="text" name="email" id="" placeholder="Enter Your email" class="comme">
+
+                      <header></header>
+                      <div class="btn">
+                        <button type="submit">Post</button>
+                      </div>
+                    </form>
                   </div>
-                  <!-- </div>       -->
-                  <!-- fin dropdown -->
-                </div>
+                </div> -->
+                <!-- </div>       -->
+                <!-- fin dropdown -->
+                <!-- </div> -->
               </div>
             </div>
 
@@ -555,7 +548,14 @@
     </div>
   </footer>
   <!--================ End Footer Area =================-->
+  <script>
+    const btn = document.getElementById('btan')
+    const avis = document.querySelector('.avis')
 
+    btn.addEventListener("click" , function(){
+      avis.style.display = 'block'
+    })
+  </script>
   <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
   <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
@@ -575,6 +575,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="js/avis.js"></script>
+  
 </body>
 
 </html>

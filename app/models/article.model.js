@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   // article.associate= models=>{
-  //   article.hasOne(models.avis, {
+  //   article.hasMany(models.commentaire, {
   //     onDelete : "cascade"
   //   })
   // }
