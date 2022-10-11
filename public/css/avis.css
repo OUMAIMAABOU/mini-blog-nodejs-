@@ -83,9 +83,7 @@ input#rate-5:checked ~ label{
 #rate-5:checked ~ form header:before{
   content: "I just love it ";
 }
-.avis form{
-  /* display: none; */
-}
+
 input:checked ~ form{
   display: block;
 }

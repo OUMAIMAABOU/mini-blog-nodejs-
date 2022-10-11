@@ -31,12 +31,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+        
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-center">
-              <li class="nav-item active"><a class="nav-link" href="">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="">Archive</a></li>
-              <li class="nav-item"><a class="nav-link" href="#category">Category</a>
+              <li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
+              <li class="nav-item"><a class="nav-link" href="">Archive</a></li> 
+                <li class="nav-item submenu dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false">Category</a>
+                    <ul class="dropdown-menu">
+                      <% categories.forEach(categorie => { %>
+                      <li class="nav-item"><a class="nav-link" href="/getoneArticleId/<%-categorie.id %>"><%-categorie.name %></a></li>
+                      <% }) %>
+                    </ul>
+                  </li>
+                  
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Pages</a>
@@ -69,7 +79,8 @@
             <h1>Amazing Places on earth</h1>
             <h4>December 12, 2018</h4>
             <div class="d-flex justify-content-center">
-              <input type="email" class="form-control w-50 mt-4" placeholder="Search">
+              <!-- <input type="search" class="form-control w-50 mt-4" placeholder="Search"> -->
+              <input type="search" id="site-search" name="q" class="form-control w-50 mt-4" placeholder="Search">
             </div>
           </div>
         </div>
@@ -165,54 +176,43 @@
                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
                   </div>
                 </div>
-                <button class="bbtns d-block mt-20 w-100">Subcribe</button>
-              </div>
-
-              <!-- <div class="single-sidebar-widget post-category-widget" id="category">
-                <h4 class="single-sidebar-widget__title">Category</h4>
-                <%// categories.forEach(function(categorie) { //%>
-                <ul class="cat-list mt-20">
-                  <li>
-                    <a href="#" class="d-flex justify-content-between">
-                      <p><%= // categorie.name %></p>
-                      <p>(03)</p>
-                    </a>
-                  </li>
+                
+                 
+              </tr>
                   
-                </ul>
-                <% //}) //%> 
-              </div> -->
+                <div class="single-sidebar-widget post-category-widget" id="category">
+                  <h4 class="single-sidebar-widget__title">Category</h4>
+                  <% categories.forEach(function(categorie) { %>
+                  <ul class="cat-list mt-20">
+                    <li>
+                      <a href="/getoneArticleId/<%-categorie.id %>" class="d-flex justify-content-between">
+                        <p><%= categorie.name %></p>
+                        
+                      </a>
+                    </li>
+                    
+                  </ul>
+                  <% }); %> 
+                </div>
+                
 
-              <div class="single-sidebar-widget popular-post-widget">
-                <h4 class="single-sidebar-widget__title">Popular Post</h4>
-                <div class="popular-post-list">
-                  <div class="single-post-list">
-                    <div class="thumb">
-                      <img class="card-img rounded-0" src="img/blog/thumb/thumb1.png" alt="">
-                      <ul class="thumb-info">
-                        <li><a href="#">Adam Colinge</a></li>
-                        <li><a href="#">Dec 15</a></li>
-                      </ul>
-                    </div>
-                    <div class="details mt-20">
-                      <a href="blog-single.html">
-                        <h6>Accused of assaulting flight attendant miktake alaways</h6>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="single-post-list">
-                    <div class="thumb">
-                      <img class="card-img rounded-0" src="img/blog/thumb/thumb2.png" alt="">
-                      <ul class="thumb-info">
-                        <li><a href="#">Adam Colinge</a></li>
-                        <li><a href="#">Dec 15</a></li>
-                      </ul>
-                    </div>
-                    <div class="details mt-20">
-                      <a href="blog-single.html">
-                        <h6>Tennessee outback steakhouse the
-                          worker diagnosed</h6>
-                      </a>
+              
+                <div class="single-sidebar-widget popular-post-widget">
+                  <h4 class="single-sidebar-widget__title">Popular Post</h4>
+                  <div class="popular-post-list">
+                    <div class="single-post-list">
+                      <div class="thumb">
+                        <img class="card-img rounded-0" src="img/blog/thumb/thumb1.png" alt="">
+                        <ul class="thumb-info">
+                          <li><a href="#">Adam Colinge</a></li>
+                          <li><a href="#">Dec 15</a></li>
+                        </ul>
+                      </div>
+                      <div class="details mt-20">
+                        <a href="blog-single.html">
+                          <h6>Accused of assaulting flight attendant miktake alaways</h6>
+                        </a>
+                      </div>
                     </div>
                   </div>
                   <div class="single-post-list">

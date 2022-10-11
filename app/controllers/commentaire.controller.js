@@ -12,7 +12,7 @@ exports.create = (req, res) => {
   };
   Commentaire.create(commentaires)
     .then(
-      res.redirect('/comments')      
+      res.redirect('/article/'+ req.body.url)
     )
     .catch(err => {
       res.status(500).send({
@@ -53,10 +53,10 @@ exports.updatecommentaire = (req, res) => {
     nom: req.body.nom,
     commentaire: req.body.commentaire,
     avis: req.body.avis,
-    articleId:  req.body.articleId
+    articleId:  req.body.articleId,
   };
   Commentaire.update(commentaires, {
-    where: { id: req.body.id }
+    where: { id : req.body.id }
   })
     .then(num => {
       if (num == 1) {
@@ -65,7 +65,7 @@ exports.updatecommentaire = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating " + id
+        message:err
       });
     });
 };
