@@ -8,11 +8,11 @@ exports.create = (req, res) => {
     nom: req.body.nom,
     commentaire: req.body.commentaire,
     avis: req.body.avis,
-    // articleId:"1"
+    articleId:req.body.articleId
   };
   Commentaire.create(commentaires)
     .then(
-      res.redirect('/blog')
+      res.redirect('/article/'+ req.body.url)
     )
     .catch(err => {
       res.status(500).send({
@@ -21,16 +21,16 @@ exports.create = (req, res) => {
       });
     });
 };
-exports.findAllcommentaire = (req, res  ) => {
-  commentaire.findAll({ order: [
+
+exports.findAllcommentaire =async (req, res  ) => {
+  let data={}
+  let data2={}
+   data  = await commentaire.findAll({ order: [
     ['id', 'DESC']
 ],})
-  .then(data => {
-      res.render('avisComme',{'commantaire':data,'is_linked':'comments'})
-    })
-    .catch(err => {
-      console.log(err)
-    });
+data2 = await article.findAll()
+    return  res.render('avisComme',{'commantaire':data,'articles':data2,'is_linked':'comments'})
+  //  return res.send(article.id)
 }
 
 exports.findOnecommentaire = (req, res) => {
@@ -57,12 +57,12 @@ exports.updatecommentaire = (req, res) => {
     email: req.body.email,
     nom: req.body.nom,
     commentaire: req.body.commentaire,
-    avis: req.body.avis,
-    // articleId: "1"
+    avis: req.body.avis, 
+    articleId:req.body.articleId
   };
 
   Commentaire.update(commentaires, {
-    where: { id: req.body.id }
+    where: { id: req.body.id}
   })
     .then(num => {
       if (num == 1) {
@@ -71,7 +71,7 @@ exports.updatecommentaire = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating " + id
+        message: "Error updating "
       });
     });
 };
@@ -97,17 +97,3 @@ exports.delete = (req, res) => {
       });
     });
 };
-// Commentaire.belongsTo(db.article); 
-
-// exports.findAllcomments = (req, res  ) => {
-//   commentaire.findAll()
-//   .then(data => {
-//       res.render('/blog',{'data':data})
-//     })
-// .catch(err => {
-
-//       console.log(err )  
-    
-// });
-
-// }

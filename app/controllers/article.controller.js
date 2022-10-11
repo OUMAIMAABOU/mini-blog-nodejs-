@@ -68,14 +68,15 @@ exports.findOneArticle = (req, res) => {
 
 exports.showOneArticle = (req, res) => {
   const url = req.params.url;
-  article.findAll({
-    limit: 1,
+  article.findOne({
+    
     where: {
         url: url
     }
     }).then(data => {
         if (data) {
           res.render('blog_details',{'articles':data})
+          // res.send(data)
         } else {
             res.status(404).send({
                 message: `Cannot find article with id=${url}.`

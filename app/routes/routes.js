@@ -11,12 +11,12 @@ module.exports = app => {
   app.get("/", article.getAllArticles);
   app.get("/article/:url", article.showOneArticle);
 
-  router.post("/createComment", commentaire.create);
+  app.post("/blog", commentaire.create);
   // router.post("/createAvis", avis.create);
   router.post("/createArticle", article.create);
 
   app.get("/comments",commentaire.findAllcommentaire);
-  // router.get("/showAllAvis", avis.findAll);
+  // app.get("/blog", commentaire.findAllcomments);
   app.get("/articles", article.findAllArticles);
 
   app.get("/comments/edite/:id", commentaire.findOnecommentaire);

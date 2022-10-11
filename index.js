@@ -40,9 +40,9 @@ app.get('/settings', (req, res) => {
   res.render('settings',{'is_linked':'settings'})
 })
 // Articles
-app.get('/articles/artu', async(req, res) => {
-  res.render('articles')
-})
+// app.get('/articles/artu', async(req, res) => {
+//   res.render('articles')
+// })
 // Categories
 
 

@@ -29,6 +29,7 @@
                         <th scope="col">email</th>
                         <th scope="col">commentaire</th>
                         <th scope="col">Avis</th>
+                        <th scope="col">article Title</th>
                         <th scope="col text-center">Action</th>
                     </tr>
                 </thead>
@@ -41,7 +42,8 @@
                                 <td scope="col"> <%-commantaire.email %></td>
                                 <td scope="col"> <%-commantaire.commentaire %></td>
                                 <td scope="col"> <%-commantaire.avis %></td>
-                                <td><a href="/comments/edite/<%-commantaire.id %>">
+                                <td scope="col"> <%-commantaire.title %></td>
+                                
                                    <input type="button" class="text-info border border-3 border-info bg-white px-4 py-2 rounded-3 text-blod" value="update">
                                 </a>
                                 <a href="/comments/delete/<%-commantaire.id %>"><input type="button"  class="text-danger border border-3 border-danger bg-white px-4 py-2 rounded-3 text-blod" value="delete">  </a></td>
