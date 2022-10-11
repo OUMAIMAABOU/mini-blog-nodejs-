@@ -18,6 +18,7 @@ module.exports = app => {
   router.post("/createArticle", article.create);
 
   app.get("/comments",commentaire.findAllcommentaire);
+
   // router.get("/showAllAvis", avis.findAll);
   app.get("/articles", article.findAllArticles);
 

@@ -12,7 +12,7 @@ exports.create = (req, res) => {
   };
   Commentaire.create(commentaires)
     .then(
-      res.redirect('/blog')
+      res.redirect('/comments')      
     )
     .catch(err => {
       res.status(500).send({
@@ -21,17 +21,16 @@ exports.create = (req, res) => {
       });
     });
 };
-exports.findAllcommentaire = (req, res  ) => {
-  commentaire.findAll({ order: [
+exports.findAllcommentaire =async (req, res  ) => {
+  let data={}
+  let data2={}
+   data  = await commentaire.findAll({ order: [
     ['id', 'DESC']
 ],})
-  .then(data => {
-      res.render('avisComme',{'commantaire':data,'is_linked':'comments'})
-    })
-    .catch(err => {
-      console.log(err)
-    });
+data2 = await article.findAll()
+    return  res.render('avisComme',{'commantaire':data,'articles':data2,'is_linked':'comments'})
 }
+
 
 exports.findOnecommentaire = (req, res) => {
   const id = req.params.id;

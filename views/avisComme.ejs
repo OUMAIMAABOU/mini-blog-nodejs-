@@ -20,6 +20,7 @@
                 <button class="btn bg-dark px-3 text-blod" style=" color:#ff9907 ;" data-bs-toggle="modal" data-bs-target="#send_to">Ajouter</button>
             </div>
         </div>
+        
         <div class="table-responsive card p-2">
             <table style="overflow: overlay;" class="table table-striped" id="myTable">
                 <thead>
@@ -77,6 +78,13 @@
                         <label for="amount" class="form-label">commentaire</label>
                         <input type="text"  class="form-control"  name="commentaire" >
                     </div>
+                    <select id="recipient_" class="form-control form-control-lg mb-3" name="articleId">
+                         <% articles.forEach(article => { %>
+
+                        <option value="<%-article.id%>"><%-article.title%></option>
+                       
+                        <%})%>
+                    </select> 
 
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 </form>
