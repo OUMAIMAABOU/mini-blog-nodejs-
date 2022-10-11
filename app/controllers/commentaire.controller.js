@@ -6,11 +6,12 @@ exports.create = (req, res) => {
         email: req.body.email,
         nom: req.body.nom,
         commentaire: req.body.commentaire,
+        avis: req.body.avis,
         articleId:"1"
       };
           Commentaire.create(commentaires)
         .then(
-          res.redirect('/comments')
+          res.redirect('/blog')
         )
         .catch(err => {
           res.status(500).send({
@@ -55,7 +56,8 @@ exports.updatecommentaire = (req, res) => {
     email: req.body.email,
     nom: req.body.nom,
     commentaire: req.body.commentaire, 
-    articleId:"1"
+    avis: req.body.avis, 
+    // articleId:"1"
   };
 
   Commentaire.update(commentaires, {
@@ -94,4 +96,4 @@ exports.delete = (req, res) => {
       });
     });
 };
-Commentaire.belongsTo(db.article); 
+// Commentaire.belongsTo(db.article); 

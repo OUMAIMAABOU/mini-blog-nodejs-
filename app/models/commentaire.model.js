@@ -16,8 +16,19 @@ module.exports = (sequelize, Sequelize) => {
          commentaire: {
            type:Sequelize.TEXT,
            allowNull: false
-         } ,        
+         } , 
+         avis: {
+          type:Sequelize.TEXT,
+          allowNull: false
+        } ,        
     });
+
+  //  commentaire.associate= models=>{
+  //       commentaire.belongsTo(models.article, {
+  //         onDelete : "cascade"
+  //       })
+  //     }
+
     return commentaire;
   };
   
