@@ -11,11 +11,12 @@ module.exports = app => {
   app.get("/", article.getAllArticles);
   app.get("/article/:url", article.showOneArticle);
 
+  router.post("/createArticle", article.create);
   router.post("/createComment", commentaire.create);
   router.post("/blog", commentaire.create);
-
+  router.post("/createCategorie", categorie.create);
   // router.post("/createAvis", avis.create);
-  router.post("/createArticle", article.create);
+
 
   app.get("/comments",commentaire.findAllcommentaire);
   // router.get("/showAllAvis", avis.findAll);
@@ -43,7 +44,7 @@ module.exports = app => {
 
 
   app.use('/comments', router);
-  app.use('/article', router);
+  app.use('/articles', router);
   // app.use('/avis', router);
   app.use('/categories', router)
 };

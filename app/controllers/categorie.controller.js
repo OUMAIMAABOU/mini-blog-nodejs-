@@ -1,5 +1,5 @@
 const { categorie } = require("../models");
-const { art } = require("../models");
+const { article } = require("../models");
 
 const db = require("../models");
 const Categorie = db.categorie;
@@ -112,12 +112,12 @@ const Op = db.Sequelize.Op;
   
     exports.findOnearticle_id = (req, res  ) => {
         const id = req.params.id
-        console.log(id)
+        
 
-        art.findAll( {where: { id_art: id }}).then(data => {
+        article.findAll( {where: { categorie_id: id }}).then(data => {
 
 
-            res.render('categorie_id',{'art':data})
+            res.render('categorie_id',{'article':data})
           })
     //   .catch(err => {
     //         console.log(

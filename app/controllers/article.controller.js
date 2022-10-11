@@ -10,6 +10,7 @@ exports.create = (req, res) => {
       title: req.body.title,
       url:slug(req.body.title),
       contenu: req.body.contenu,
+      categorie_id: req.body.categorie_id
     };
     Article.create(article)
     .then(
@@ -23,17 +24,18 @@ exports.create = (req, res) => {
     });
 };
 
-exports.findAllArticles = (req, res  ) => {
-  article.findAll({ order: [
+exports.findAllArticles = async(req, res  ) => {
+  
+  let data={}
+  let data2={}
+  data= await article.findAll({ order: [
     ['id', 'DESC']
-  ],})
-    .then(data => {
-        res.render('articles',{'articles':data,'is_linked':'articles'})
-      })
-  .catch(err => {
-        console.log(err )  
-  });
-  }
+  ],}) 
+  data2 = await db.categorie.findAll()
+
+        res.render('articles',{'articles':data,'categories':data2, 'is_linked':'articles'})
+   
+}
 
 exports.getAllArticles = async(req, res  ) => {
   let data={}
@@ -43,7 +45,7 @@ exports.getAllArticles = async(req, res  ) => {
   ],}) 
   data2 = await db.categorie.findAll()
 
-       return    res.render('homePage',{'articles':data,'categories':data2})
+        res.render('homePage',{'articles':data,'categories':data2})
    
 }
 
