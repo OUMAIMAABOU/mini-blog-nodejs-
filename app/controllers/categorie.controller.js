@@ -27,7 +27,7 @@ const Op = db.Sequelize.Op;
           ['id', 'DESC']
       ],})
         .then(data => {
-            res.render('categories',{'categories':data})
+            res.render('categories',{'categories':data,'is_linked':'categories'})
           })
       .catch(err => {
             console.log(err )  
