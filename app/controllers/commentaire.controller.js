@@ -21,18 +21,14 @@ exports.create = (req, res) => {
       });
     });
 };
-
 exports.findAllcommentaire =async (req, res  ) => {
   let data={}
   let data2={}
-   data  = await commentaire.findAll({ order: [
-    ['id', 'DESC']
-],})
-data2 = await article.findAll()
-    return  res.render('avisComme',{'commantaire':data,'articles':data2,'is_linked':'comments'})
-  //  return res.send(article.id)
+   data  = await commentaire.findAll({ order: [['id', 'DESC']],include:article,  raw: true, nest: true})
+   console.log(data)
+  data2 = await article.findAll()
+    return  res.render('avisComme',{data,data2,'is_linked':'comments'})
 }
-
 exports.findOnecommentaire = (req, res) => {
   const id = req.params.id;
   commentaire.findByPk(id)
@@ -51,7 +47,6 @@ exports.findOnecommentaire = (req, res) => {
       });
     });
 };
-
 exports.updatecommentaire = (req, res) => {
   const commentaires = {
     email: req.body.email,
@@ -60,7 +55,6 @@ exports.updatecommentaire = (req, res) => {
     avis: req.body.avis, 
     articleId:req.body.articleId
   };
-
   Commentaire.update(commentaires, {
     where: { id: req.body.id}
   })
@@ -75,9 +69,6 @@ exports.updatecommentaire = (req, res) => {
       });
     });
 };
-
-
-
 exports.delete = (req, res) => {
   Commentaire.destroy({
     where: { id: req.params.id }

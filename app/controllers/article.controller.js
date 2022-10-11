@@ -71,7 +71,6 @@ exports.findOneArticle = (req, res) => {
 exports.showOneArticle = (req, res) => {
   const url = req.params.url;
   article.findOne({
-    limit: 1,
     where: {
         url: url
     }

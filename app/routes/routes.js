@@ -21,7 +21,6 @@ module.exports = app => {
 
 
   app.get("/comments",commentaire.findAllcommentaire);
-  // app.get("/blog", commentaire.findAllcomments);
   app.get("/articles", article.findAllArticles);
 
   app.get("/comments/edite/:id", commentaire.findOnecommentaire);
