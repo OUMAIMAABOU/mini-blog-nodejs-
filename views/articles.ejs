@@ -29,6 +29,7 @@
                         <th scope="col">title</th>
                         <th scope="col">url</th>
                         <th scope="col">contenu</th>
+                        <th scope="col">categorie</th>
                         <th scope="col">delete</th>
                         <th scope="col">update</th>
                     </tr>
@@ -40,6 +41,7 @@
                         <td scope="col"> <%-article.title %></td>
                         <td scope="col"> <%-article.url %>  </td>
                         <td scope="col"> <%-article.contenu %></td>
+                        <td scope="col"> <%-article.categorie_id %></td>
                         <td>
                             <a href="/articles/edite/<%-article.id %>">
                             <input type="button" class="text-info border border-3 border-info bg-white px-4 py-2 rounded-3 text-blod" value="update">
@@ -76,13 +78,13 @@
                         <label for="amount" class="form-label">contenu</label>
                         <input type="text"  class="form-control"  name="contenu" >
                     </div>
-                    <select id="recipient_" class="form-control form-control-lg mb-3" name="recipient">
-                        
-                        <option value="4">best categorie</option>
-                        <option value="4">awesome categorie</option>
-                        <option value="4">others categorie</option>
-                        
-                    </select>
+                    <div>
+                        <select id="recipient_" class="form-control form-control-lg mb-3" name="categorie_id">
+                    <% categories.forEach(categorie => { %>
+                            <option value="<%-categorie.id %>"><%-categorie.name %></option>
+                             <% }) %>
+                        </select>       
+                </div>
                     <button type="submit" class="btn btn-primary">Ajouter</button>
                 </form>
             </div>

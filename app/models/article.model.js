@@ -16,6 +16,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         contenu: {
           type:Sequelize.STRING,
+        },
+      categorie_id: {
+          type:Sequelize.STRING,
         }
   });
 

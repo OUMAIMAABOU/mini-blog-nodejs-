@@ -8,8 +8,9 @@ const Article = db.article;
 exports.create = (req, res) => {
   const article = {
       title: req.body.title,
-      url: req.body.url,
+      url:slug(req.body.title),
       contenu: req.body.contenu,
+      categorie_id: req.body.categorie_id
     };
     Article.create(article)
     .then(
@@ -23,28 +24,29 @@ exports.create = (req, res) => {
     });
 };
 
-exports.findAllArticles = (req, res  ) => {
-  article.findAll({ order: [
+exports.findAllArticles = async(req, res  ) => {
+  
+  let data={}
+  let data2={}
+  data= await article.findAll({ order: [
     ['id', 'DESC']
-  ],})
-    .then(data => {
-        res.render('articles',{'articles':data,'is_linked':'articles'})
-      })
-  .catch(err => {
-        console.log(err )  
-  });
-  }
+  ],}) 
+  data2 = await db.categorie.findAll()
 
-exports.getAllArticles = (req, res  ) => {
-  article.findAll({ order: [
+        res.render('articles',{'articles':data,'categories':data2, 'is_linked':'articles'})
+   
+}
+
+exports.getAllArticles = async(req, res  ) => {
+  let data={}
+  let data2={}
+  data= await article.findAll({ order: [
     ['id', 'DESC']
-  ],})
-    .then(data => {
-        res.render('homePage',{'articles':data})
-      })
-  .catch(err => {
-        console.log(err )  
-  });
+  ],}) 
+  data2 = await db.categorie.findAll()
+
+        res.render('homePage',{'articles':data,'categories':data2})
+   
 }
 
 exports.findOneArticle = (req, res) => {

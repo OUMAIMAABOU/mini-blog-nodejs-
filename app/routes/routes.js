@@ -14,6 +14,11 @@ module.exports = app => {
   app.post("/blog", commentaire.create);
   // router.post("/createAvis", avis.create);
   router.post("/createArticle", article.create);
+  router.post("/createComment", commentaire.create);
+  router.post("/blog", commentaire.create);
+  router.post("/createCategorie", categorie.create);
+  // router.post("/createAvis", avis.create);
+
 
   app.get("/comments",commentaire.findAllcommentaire);
   // app.get("/blog", commentaire.findAllcomments);
@@ -22,6 +27,9 @@ module.exports = app => {
   app.get("/comments/edite/:id", commentaire.findOnecommentaire);
   app.get("/articles/edite/:id", article.findOneArticle);
   // router.get("/gitOneAvis/:id", avis.findOne);
+  // router.get("/gitOneArticle/:id", article.findOne);
+  app.get("/getoneCategorie/:id", categorie.findOnecategorie);
+  app.get("/getoneArticleId/:id", categorie.findOnearticle_id);
 
   app.post("/comments/update", commentaire.updatecommentaire);
   app.post("/articles/update", article.UpdateArticle);
@@ -34,12 +42,11 @@ module.exports = app => {
   app.post("/updateCategorie", categorie.updatecategorie);
   app.get("/getoneCategorie/:id", categorie.findOnecategorie);
   app.get("/categories", categorie.findAllCategoriesdash);
-  app.get("/", categorie.findAllCategorieshome);
+  
 
 
   app.use('/comments', router);
   app.use('/articles', router);
   // app.use('/avis', router);
   app.use('/categories', router)
-
 };
