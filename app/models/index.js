@@ -18,6 +18,3 @@ db.article = require("./article.model.js")(sequelize, Sequelize);
 // db.avis = require('./avis.model.js')(sequelize, Sequelize)
 module.exports = db;
 
-// one -> many
-// categorie.hasMany(article) 
-// article.belongsTo(categorie) 

@@ -19,7 +19,7 @@
                 <h5 >Ajouter</h5>
             <p class="d-flex m-0 mt-3 justify-content-center" id="warning"></p>
             <div class="">
-                <form action="/blog/update" method="post">
+                <form action="/comments/update" method="post">
                     <input type="hidden"  class="form-control"  name="id" value="<%=data.id %> ">
 
                     <div class="mb-3">
@@ -33,6 +33,10 @@
                     <div class="mb-3">
                         <label for="amount" class="form-label">commentaire</label>
                         <input type="text"  class="form-control"  name="commentaire" value="<%-data.commentaire %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Article</label>
+                        <input type="text"  class="form-control"  name="commentaire" value="<%-data.articleId %>">
                     </div>
 
                     <button type="submit" class="btn btn-primary">modifier</button>

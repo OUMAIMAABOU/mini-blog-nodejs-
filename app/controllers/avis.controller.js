@@ -1,7 +1,6 @@
 // const { avis } = require('../models');
 // const db = require('../models');
 // const Avis = db.avis;
-// const Op = db.Sequelize.Op;
 
 // // Create and Save a new avis
 // exports.create = (req, res) => {

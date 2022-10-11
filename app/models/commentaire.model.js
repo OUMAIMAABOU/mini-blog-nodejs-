@@ -19,7 +19,7 @@ module.exports = (sequelize, Sequelize) => {
          } , 
          avis: {
           type:Sequelize.TEXT,
-          allowNull: false
+          allowNull: true
         } ,        
     });
 
