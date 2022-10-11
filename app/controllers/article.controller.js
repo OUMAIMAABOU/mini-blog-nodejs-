@@ -35,16 +35,16 @@ exports.findAllArticles = (req, res  ) => {
   });
   }
 
-exports.getAllArticles = (req, res  ) => {
-  article.findAll({ order: [
+exports.getAllArticles = async(req, res  ) => {
+  let data={}
+  let data2={}
+  data= await article.findAll({ order: [
     ['id', 'DESC']
-  ],})
-    .then(data => {
-        res.render('homePage',{'articles':data})
-      })
-  .catch(err => {
-        console.log(err )  
-  });
+  ],}) 
+  data2 = await db.categorie.findAll()
+
+       return    res.render('homePage',{'articles':data,'categories':data2})
+   
 }
 
 exports.findOneArticle = (req, res) => {

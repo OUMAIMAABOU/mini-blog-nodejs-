@@ -30,24 +30,14 @@ const Op = db.Sequelize.Op;
           ['id', 'DESC']
       ],})
         .then(data => {
-            res.render('categories',{'categories':data})
+            res.render('categories',{'categories':data, 'is_linked' : 'categories'})
           })
       .catch(err => {
             console.log(err )  
       });
       }
 
-      exports.findAllCategorieshome = (req, res  ) => {
-        categorie.findAll({ order: [
-          ['id', 'DESC']
-      ],})
-        .then(data => {
-            res.render('homePage',{'categories':data})
-          })
-      .catch(err => {
-            console.log(err )  
-      });
-      }
+    
 
     exports.findOnecategorie = (req, res) => {
         const id = req.params.id;
@@ -119,25 +109,7 @@ const Op = db.Sequelize.Op;
           });
       };
 
-    //   exports.findOnearticle_id = (req, res) => {
-    //     const id = req.params.id;
-    
-    //     art.findByPk(id).then(data => {
-    //         if (data) {
-    //             res.render('categorie_id', {'art': data});
-               
-    //         } else {
-    //         res.status(404).send({
-    //             message: `Cannot find Tutorial with id=${id}.`
-    //         });
-    //         }
-    //     })
-    //     .catch(err => {
-    //         res.status(500).send({
-    //         message: "Error retrieving Tutorial with id=" + id
-    //         });
-    //     });
-    // };
+  
     exports.findOnearticle_id = (req, res  ) => {
         const id = req.params.id
         console.log(id)
@@ -154,16 +126,4 @@ const Op = db.Sequelize.Op;
     //   });
       }
 
-    //   exports.articleByCategory = async (req, res)=>{
-    //     const id = req.params.id;
-      
-    //       const data = await Article.findAll( { where: { CategoryId: id }
-      
-    //     })
-    //      res.render('home',{
-    //       articles: data,
-    //       categories:alldatacat
-      
-    //      });
-      
-    //   }
+   

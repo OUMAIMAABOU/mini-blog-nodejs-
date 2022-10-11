@@ -24,7 +24,7 @@ module.exports = app => {
   app.get("/comments/edite/:id", commentaire.findOnecommentaire);
   app.get("/articles/edite/:id", article.findOneArticle);
   // router.get("/gitOneAvis/:id", avis.findOne);
-  router.get("/gitOneArticle/:id", article.findOne);
+  // router.get("/gitOneArticle/:id", article.findOne);
   app.get("/getoneCategorie/:id", categorie.findOnecategorie);
   app.get("/getoneArticleId/:id", categorie.findOnearticle_id);
 
@@ -39,7 +39,7 @@ module.exports = app => {
   app.post("/updateCategorie", categorie.updatecategorie);
   app.get("/getoneCategorie/:id", categorie.findOnecategorie);
   app.get("/categories", categorie.findAllCategoriesdash);
-  app.get("/", categorie.findAllCategorieshome);
+  
 
 
   app.use('/comments', router);
