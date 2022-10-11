@@ -91,17 +91,3 @@ exports.delete = (req, res) => {
 Commentaire.belongsTo(db.article); 
 db.article.hasMany(Commentaire); 
 
-
-
-// exports.findAllcomments = (req, res  ) => {
-//   commentaire.findAll()
-//   .then(data => {
-//       res.render('/blog',{'data':data})
-//     })
-// .catch(err => {
-
-//       console.log(err )  
-    
-// });
-
-// }
