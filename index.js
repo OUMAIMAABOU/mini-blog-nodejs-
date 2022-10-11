@@ -32,10 +32,12 @@ app.get("/blog", (req, res) => {
 // Dashboard
 
 app.get('/dash', (req, res) => {
-  res.render('dashboard')
+  res.render('dashboard',{'is_linked':'dashboard'})
 })
+// Settings
+
 app.get('/settings', (req, res) => {
-  res.render('settings')
+  res.render('settings',{'is_linked':'settings'})
 })
 // Articles
 app.get('/articles/artu', async(req, res) => {
@@ -44,17 +46,7 @@ app.get('/articles/artu', async(req, res) => {
 
 // Categories
 
-// 
-//------------ view table categorie dashboard 
 
-//------------ view table categorie dashboard 
-
-//---------- view categorie page home
-// app.get('/', async(req, res) => {
-//   let categorie = await findAll()
-//   res.render('homePage', {categorie})
-// })
-//---------- view categorie page home
 
 require("./app/routes/routes")(app);
 const port = process.env.PORT || 8080

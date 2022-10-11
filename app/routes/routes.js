@@ -1,39 +1,46 @@
 module.exports = app => {
   var router = require("express").Router();
-  
   const commentaire = require("../controllers/commentaire.controller.js");
   const categorie = require("../controllers/categorie.controller.js");
   const avis = require('../controllers/avis.controller')
   const article = require('../controllers/article.controller')
 
-  
-  app.post("/blog", commentaire.create);
-  // app.post("/blog", avis.create);
-  router.post("/createArticle", article.create);
-  router.post("/createCategorie", categorie.create);
 
-  app.get("/comments", commentaire.findAllcommentaire);
-  // router.get("/showAllAvis", avis.findAll);
-  router.get("/showAllArticles", article.findAll);
-  app.get("/categories", categorie.findAllCategoriesdash);
-  app.get("/", categorie.findAllCategorieshome);
+
   
+  app.get("/", article.getAllArticles);
+  app.get("/article/:url", article.showOneArticle);
+
+  router.post("/createComment", commentaire.create);
+  router.post("/blog", commentaire.create);
+
+  // router.post("/createAvis", avis.create);
+  router.post("/createArticle", article.create);
+
+  app.get("/comments",commentaire.findAllcommentaire);
+  // router.get("/showAllAvis", avis.findAll);
+  app.get("/articles", article.findAllArticles);
 
   app.get("/comments/edite/:id", commentaire.findOnecommentaire);
+  app.get("/articles/edite/:id", article.findOneArticle);
   // router.get("/gitOneAvis/:id", avis.findOne);
   router.get("/gitOneArticle/:id", article.findOne);
   app.get("/getoneCategorie/:id", categorie.findOnecategorie);
   app.get("/getoneArticleId/:id", categorie.findOnearticle_id);
 
   app.post("/comments/update", commentaire.updatecommentaire);
+  app.post("/articles/update", article.UpdateArticle);
   // router.put("/updateAvis/:id", avis.update)
-  router.put("/updateArticle/:id", article.update)
-  app.post("/updateCategorie", categorie.updatecategorie);
   
   app.get("/comments/delete/:id", commentaire.delete);
+  app.get("/articles/delete/:id", article.delete);
   // router.delete("/deleteAvis/:id" , avis.delete)
-  router.delete("/deleteArticle/:id" , article.delete)
   app.get ("/deleteCategorie/:id", categorie.delete);
+  app.post("/updateCategorie", categorie.updatecategorie);
+  app.get("/getoneCategorie/:id", categorie.findOnecategorie);
+  app.get("/categories", categorie.findAllCategoriesdash);
+  app.get("/", categorie.findAllCategorieshome);
+
 
   app.use('/comments', router);
   app.use('/article', router);

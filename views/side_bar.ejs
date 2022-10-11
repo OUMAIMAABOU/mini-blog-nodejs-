@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +11,6 @@
     <link rel="stylesheet" href="css/dashboard_css/style/dashboard_sidebar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-  
-
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
         *{
@@ -32,37 +28,40 @@
             </div>
             <nav class="mt-0 mt-5">
                 <ul class="p-0">
-                    <li class="ms-0 mb-2 me-3 nav-item d-flex justify-content-start align-items-center">
+                    <li class="ms-0 mb-2 me-3 nav-item d-flex justify-content-start align-items-center 
+                        <% if(is_linked == 'dashboard'){%><%="link__active"%><%}%>">
                         <a title="Dashboard" href="/dash"
                             class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
                             <img src="images/home.png" width="34" alt="Dashboard">
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="ms-0 mb-2 me-3 nav-item d-flex justify-content-start align-items-center">
+                    <li class="ms-0 mb-2 me-3 nav-item d-flex justify-content-start align-items-center 
+                        <% if(is_linked == 'articles'){%><%="link__active"%><%}%>">
                         <a title="Articles" href="/articles"
                             class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
                             <img src="images/article.png" width="25" alt="Articles" style="margin-left: 7px;">
                             <span>Articles</span>
                         </a>
                     </li>
-                    <li class="ms-0 mb-2 me-3 nav-item d-flex justify-content-start align-items-center">
+                    <li class="ms-0 mb-2 me-3 nav-item d-flex justify-content-start align-items-center 
+                        <% if(is_linked == 'categories'){%><%="link__active"%><%}%>">
                         <a title="Categories" href="/categories"
                             class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
                             <img src="images/categorie.png" width="24" alt="Categories" style="margin-left: 7px;">
                             <span>Categories</span>
                         </a>
                     </li>
-                    <li class="ms-0 mb-2 me-3 nav-item
-                        d-flex justify-content-start align-items-center">
+                    <li class="ms-0 mb-2 me-3 nav-item d-flex justify-content-start align-items-center 
+                        <% if(is_linked == 'comments'){%><%="link__active"%><%}%>">
                         <a title="Comments" href="/comments"
                             class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
                             <img src="images/comment.png" width="25" alt="Comments" style="margin-left: 7px;">
                             <span>Comments</span>
                         </a>
                     </li>
-                    <li class="ms-0 mb-2 me-3 nav-item
-                        d-flex justify-content-start align-items-center">
+                    <li class="ms-0 mb-2 me-3 nav-item d-flex justify-content-start align-items-center 
+                        <% if(is_linked == 'settings'){%><%="link__active"%><%}%>">
                         <a title="Settings" href="/settings"
                             class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
                             <img src="images/settings.png" width="25" alt="Settings" style="margin-left: 7px;">
