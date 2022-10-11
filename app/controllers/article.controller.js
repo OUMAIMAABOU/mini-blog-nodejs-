@@ -61,7 +61,7 @@ exports.findOneArticle = (req, res) => {
     })
     .catch(err => {
         res.status(500).send({
-            message: "Error retrieving avis with id=" + id
+            message: err 
     });
   });
 };
@@ -69,7 +69,7 @@ exports.findOneArticle = (req, res) => {
 exports.showOneArticle = (req, res) => {
   const url = req.params.url;
   article.findOne({
-    
+    limit: 1,
     where: {
         url: url
     }
