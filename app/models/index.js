@@ -17,11 +17,11 @@ db.categorie = require("./categorie.model.js")(sequelize, Sequelize);
 db.article = require("./article.model.js")(sequelize, Sequelize);
 // db.avis = require('./avis.model.js')(sequelize, Sequelize)
 
-db.article.hasMany(db.commentaire, { as: "comments" });
-db.commentaire.belongsTo(db.article, {
-  foreignKey: "articleId",
-  as: "article",
-});
+// db.article.hasMany(db.commentaire, { as: "comments" });
+// db.commentaire.belongsTo(db.article, {
+//   foreignKey: "articleId",
+//   as: "article",
+// });
 module.exports = db;
 
 // one -> many
