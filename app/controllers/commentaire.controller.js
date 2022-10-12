@@ -1,6 +1,7 @@
 const { commentaire, article } = require("../models");
 const db = require("../models");
 const Commentaire = db.commentaire;
+const Sequelize = require("sequelize");
 
 exports.create = (req, res) => {
   const commentaires = {
@@ -25,7 +26,6 @@ exports.findAllcommentaire =async (req, res  ) => {
   let data={}
   let data2={}
    data  = await commentaire.findAll({ order: [['id', 'DESC']],include:article,  raw: true, nest: true})
-   console.log(data)
   data2 = await article.findAll()
     return  res.render('avisComme',{data,data2,'is_linked':'comments'})
 }
@@ -47,16 +47,46 @@ exports.findOnecommentaire = (req, res) => {
       });
     });
 };
+
+exports.findbyname =  async(req, res) => {
+  const comm = await commentaire.findAll(
+   {
+     where : { nom : req.params.nom },
+     raw: true,
+     nest: true,
+   }
+  )
+console.log(comm)
+
+ }
+
+
+ exports.showallarticlecommentaire = (req, res) => {
+  commentaire.findAll({
+    where: {
+      articleId: req.params.id
+    }, include:commentaire,  raw: true, nest: true
+    }).then(data => {
+       
+        console.log(data)
+     
+        })
+   
+    .catch(err => {
+        res.status(500).send({
+            message: "Error retrieving article with id=" + url
+    });
+  });
+};
 exports.updatecommentaire = (req, res) => {
   const commentaires = {
     email: req.body.email,
     nom: req.body.nom,
     commentaire: req.body.commentaire,
     avis: req.body.avis,
-    articleId:  req.body.articleId,
   };
   Commentaire.update(commentaires, {
-    where: { id : req.body.id }
+    where: { id : req.params.id }
   })
     .then(num => {
       if (num == 1) {
@@ -68,6 +98,8 @@ exports.updatecommentaire = (req, res) => {
         message:err
       });
     });
+
+    
 };
 exports.delete = (req, res) => {
   Commentaire.destroy({

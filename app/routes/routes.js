@@ -1,5 +1,7 @@
 module.exports = app => {
   var router = require("express").Router();
+  const Sequelize = require("sequelize");
+
   const commentaire = require("../controllers/commentaire.controller.js");
   const categorie = require("../controllers/categorie.controller.js");
   const avis = require('../controllers/avis.controller')
@@ -10,27 +12,39 @@ module.exports = app => {
   
   app.get("/", article.getAllArticles);
   app.get("/article/:url", article.showOneArticle);
+  
+
 
   app.post("/blog", commentaire.create);
   // router.post("/createAvis", avis.create);
   router.post("/createArticle", article.create);
-  router.post("/createComment", commentaire.create);
   router.post("/blog", commentaire.create);
   router.post("/createCategorie", categorie.create);
   // router.post("/createAvis", avis.create);
-
-
+  router.post("/createComment", commentaire.create);
   app.get("/comments",commentaire.findAllcommentaire);
+
+  
+  app.get("/comments/edite/:id", commentaire.findOnecommentaire);
+  app.post("/comments/update/:id", commentaire.updatecommentaire);
+
+  
+ 
+
+
+  // app.get("/comments/getAllAvis/:id_article",commentaire.count);
+
+  
+
+
   app.get("/articles", article.findAllArticles);
 
-  app.get("/comments/edite/:id", commentaire.findOnecommentaire);
   app.get("/articles/edite/:id", article.findOneArticle);
   // router.get("/gitOneAvis/:id", avis.findOne);
-  // router.get("/gitOneArticle/:id", article.findOne);
+  // app.get("/gitOneArticle/:id", article.findOne);
   app.get("/getoneCategorie/:id", categorie.findOnecategorie);
   app.get("/getoneArticleId/:id", categorie.findOnearticle_id);
 
-  app.post("/comments/update", commentaire.updatecommentaire);
   app.post("/articles/update", article.UpdateArticle);
   // router.put("/updateAvis/:id", avis.update)
   
@@ -42,6 +56,7 @@ module.exports = app => {
   app.get("/getoneCategorie/:id", categorie.findOnecategorie);
   app.get("/categories", categorie.findAllCategoriesdash);
   
+  app.get("/comments/findbyname/:nom",commentaire.findbyname);
 
 
   app.use('/comments', router);

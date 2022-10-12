@@ -1,4 +1,4 @@
-const { article } = require('../models');
+const { article, commentaire } = require('../models');
 const db = require('../models');
 const slug = require('slug')
 
@@ -90,6 +90,8 @@ exports.showOneArticle = (req, res) => {
     });
   });
 };
+
+
 
 exports.UpdateArticle = (req, res) => {
   const article = {
