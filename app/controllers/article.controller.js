@@ -1,4 +1,4 @@
-const { article } = require('../models');
+const { article, commentaire } = require('../models');
 const db = require('../models');
 const slug = require('slug')
 
@@ -10,6 +10,7 @@ exports.create = (req, res) => {
       title: req.body.title,
       url:slug(req.body.title),
       contenu: req.body.contenu,
+      categorie_id: req.body.categorie_id
     };
     Article.create(article)
     .then(
@@ -23,28 +24,29 @@ exports.create = (req, res) => {
     });
 };
 
-exports.findAllArticles = (req, res  ) => {
-  article.findAll({ order: [
+exports.findAllArticles = async(req, res  ) => {
+  
+  let data={}
+  let data2={}
+  data= await article.findAll({ order: [
     ['id', 'DESC']
-  ],})
-    .then(data => {
-        res.render('articles',{'articles':data,'is_linked':'articles'})
-      })
-  .catch(err => {
-        console.log(err )  
-  });
-  }
+  ],}) 
+  data2 = await db.categorie.findAll()
 
-exports.getAllArticles = (req, res  ) => {
-  article.findAll({ order: [
+        res.render('articles',{'articles':data,'categories':data2, 'is_linked':'articles'})
+   
+}
+
+exports.getAllArticles = async(req, res  ) => {
+  let data={}
+  let data2={}
+  data= await article.findAll({ order: [
     ['id', 'DESC']
-  ],})
-    .then(data => {
-        res.render('homePage',{'articles':data})
-      })
-  .catch(err => {
-        console.log(err )  
-  });
+  ],}) 
+  data2 = await db.categorie.findAll()
+
+        res.render('homePage',{'articles':data,'categories':data2})
+   
 }
 
 exports.findOneArticle = (req, res) => {
@@ -61,7 +63,7 @@ exports.findOneArticle = (req, res) => {
     })
     .catch(err => {
         res.status(500).send({
-            message: "Error retrieving avis with id=" + id
+            message: err 
     });
   });
 };
@@ -75,6 +77,7 @@ exports.showOneArticle = (req, res) => {
     }).then(data => {
         if (data) {
           res.render('blog_details',{'articles':data})
+          // res.send(data)
         } else {
             res.status(404).send({
                 message: `Cannot find article with id=${url}.`
@@ -87,6 +90,8 @@ exports.showOneArticle = (req, res) => {
     });
   });
 };
+
+
 
 exports.UpdateArticle = (req, res) => {
   const article = {
